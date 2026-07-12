@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import body from '../_parts/privacy.body.html?raw';
+---
+
+<BaseLayout title="개인정보처리방침 — 가온" description="가온 개인정보처리방침. 서식·계산 입력값은 브라우저 안에서만 처리되어 서버로 수집되지 않습니다. 광고(Google AdSense) 쿠키 이용에 관한 고지를 포함합니다." canonical="/privacy/">
+  <Fragment set:html={body} />
+</BaseLayout>

@@ -1,0 +1,81 @@
+<section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 위자료·재산분할 범위</p>
+      <div class="section-head">
+        <h2>위자료·재산분할 범위 계산기</h2><span class="rule"></span><span class="count">CALC 06</span>
+      </div>
+
+      <div class="callout warn">
+        <strong>이 도구는 &lsquo;금액을 맞히는&rsquo; 계산기가 아닙니다.</strong> 위자료·재산분할은 혼인 기간, 유책 정도, 재산 형성 기여도 등
+        수많은 개별 사정에 따라 정해지므로, 특정 금액을 단정할 수 없습니다. 아래 결과는 <strong>일반적인 산정 &lsquo;범위&rsquo;</strong>를 참고로 보여줄 뿐이며,
+        <strong>실제 판결과는 크게 다를 수 있습니다.</strong>
+      </div>
+
+      <!-- 위자료 -->
+      <div class="panel">
+        <h2 class="with-rule">① 위자료 (정신적 손해 배상)</h2>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="d-years">혼인 기간 (년)</label>
+            <input type="number" id="d-years" min="0" step="1" placeholder="예: 10">
+          </div>
+          <div class="field-group">
+            <label for="d-fault">상대방 유책 정도</label>
+            <select id="d-fault">
+              <option value="low">비교적 가벼움</option>
+              <option value="mid" selected>보통</option>
+              <option value="high">중대함 (외도·폭력 등)</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row"><button type="button" class="btn" id="d-run1">위자료 범위 보기</button></div>
+        <div id="d-res1" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">일반적 위자료 범위 (참고)</span><span class="v" id="r-alimony" style="color:var(--stamp-ink);"></span></div>
+          </div>
+          <p class="hint">우리 실무에서 이혼 위자료는 대체로 이 범위 안에서 정해지는 경향이 있으나, 사안에 따라 이보다 낮거나 높을 수 있습니다. 위자료는 재산분할과 별개로 청구합니다.</p>
+        </div>
+      </div>
+
+      <!-- 재산분할 -->
+      <div class="panel" style="margin-top:1.6rem;">
+        <h2 class="with-rule">② 재산분할</h2>
+        <div class="field-group">
+          <label for="d-asset">분할 대상 순재산 (부부 합산 재산 − 채무, 원)</label>
+          <input type="text" id="d-asset" inputmode="numeric" placeholder="예: 500,000,000">
+        </div>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="d-years2">혼인 기간 (년)</label>
+            <input type="number" id="d-years2" min="0" step="1" placeholder="예: 10">
+          </div>
+          <div class="field-group">
+            <label for="d-type">혼인 형태 (기여 형태)</label>
+            <select id="d-type">
+              <option value="dual">맞벌이</option>
+              <option value="single" selected>외벌이 + 전업 배우자</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row"><button type="button" class="btn" id="d-run2">재산분할 범위 보기</button></div>
+        <div id="d-res2" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">일반적 기여도 범위 (참고)</span><span class="v" id="r-ratio" style="color:var(--stamp-ink);"></span></div>
+            <div class="result-line"><span class="k">이에 따른 예상 분할액 범위</span><span class="v" id="r-amount" style="color:var(--seal);font-size:1.05rem;"></span></div>
+          </div>
+          <p class="hint">전업주부의 가사·육아 노동도 명백한 기여로 인정됩니다. 혼인 기간이 길수록 기여도가 높게 평가되는 경향이 있으나, 특유재산·채무·재산 형성 경위에 따라 달라집니다.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.6rem;">
+        정확한 판단은 재산 내역과 사정을 종합해 법원이 정합니다. 구체적인 상담은 <a href="tel:132">대한법률구조공단 132</a> 또는 변호사와 하시고,
+        절차는 <a href="/guides/property-division/">재산분할 가이드</a>와 <a href="/guides/alimony/">위자료 가이드</a>를 참고하세요.
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div><h3>이혼 절차부터 정리하려면</h3><p>협의·재판 이혼, 재산분할, 양육까지 절차 가이드로.</p></div>
+        <a class="btn-stamp" href="/guides/#divorce">이혼 가이드 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+  <div class="wrap"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_labor-complaint.body.html?raw';
+import scriptJs from '../../_parts/tools_labor-complaint.script.js?raw';
+---
+
+<BaseLayout title="임금체불 진정서 생성기 — 고용노동청 무료 작성 | 가온" description="못 받은 임금·퇴직금을 고용노동청에 진정하는 임금체불 진정서를 직접 작성하는 무료 생성기. 진정인·사업장·체불 내역을 채우면 인쇄용 진정서가 완성됩니다. 입력값은 브라우저에서만 처리됩니다." canonical="/tools/labor-complaint/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

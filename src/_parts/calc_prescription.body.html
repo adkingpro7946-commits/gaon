@@ -1,0 +1,67 @@
+<section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 소멸시효</p>
+      <div class="section-head">
+        <h2>소멸시효 계산기</h2><span class="rule"></span><span class="count">CALC 04</span>
+      </div>
+      <p class="section-intro">
+        채권은 일정 기간 행사하지 않으면 <strong>소멸시효</strong>가 완성되어 청구할 수 없게 됩니다.
+        종류와 기산일을 넣어 완성일과 남은 기간을 확인하세요.
+      </p>
+
+      <div class="panel">
+        <div class="field-group">
+          <label for="p-type">채권 종류</label>
+          <select id="p-type">
+            <option value="10">일반 민사채권 — 10년</option>
+            <option value="5">상사채권(상거래) — 5년</option>
+            <option value="3">임금·퇴직금·재해보상 — 3년</option>
+            <option value="3b">물품대금·상품 판매대금 — 3년</option>
+            <option value="3c">공사대금·설계·감리 — 3년</option>
+            <option value="3d">이자·부양료·급료 등 정기금 — 3년</option>
+            <option value="1">음식료·숙박료·입장료·대여료 — 1년</option>
+            <option value="tort">불법행위 손해배상 — 3년/10년</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="p-start" id="p-start-label">기산일 (권리를 행사할 수 있는 때)</label>
+          <input type="date" id="p-start">
+          <p class="hint" id="p-start-hint">보통 변제기 다음날, 임금은 지급일 등. 불법행위는 “손해와 가해자를 안 날”.</p>
+        </div>
+        <div class="field-group" id="p-tort-wrap" style="display:none;">
+          <label for="p-tort-date">불법행위가 있은 날 (10년 기산)</label>
+          <input type="date" id="p-tort-date">
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="p-run">시효 완성일 계산</button>
+        </div>
+        <div id="p-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">적용 시효기간</span><span class="v" id="pr-years" style="font-size:1rem;"></span></div>
+            <div class="result-line"><span class="k">시효 완성일</span><span class="v" id="pr-date"></span></div>
+            <div class="result-line result-total"><span class="k" id="pr-status-label">남은 기간</span><span class="v" id="pr-remain"></span></div>
+          </div>
+          <p class="hint" id="pr-detail" style="margin-top:.8rem;"></p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.6rem;">
+        <strong>시효는 “중단”시킬 수 있습니다.</strong> 재판상 청구(소송·지급명령), 압류·가압류, 채무자의 승인 등이 있으면 시효가 새로 시작됩니다.
+        내용증명(최고)은 6개월 내 재판상 청구를 하면 시효중단 효력이 유지됩니다.
+      </div>
+      <div class="callout warn">
+        <strong>참고용입니다.</strong> 기산일 판단과 시효기간은 사안·법령 개정에 따라 달라질 수 있고, 특별법에 다른 규정이 있을 수 있습니다.
+        시효 임박 시에는 지체 없이 <a href="tel:132">법률구조공단 132</a> 등 전문가의 확인을 받으세요.
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div>
+          <h3>시효가 다가온다면</h3>
+          <p>내용증명으로 시효를 잠시 멈추고, 지급명령·소송을 준비하세요.</p>
+        </div>
+        <a class="btn-stamp" href="/tools/notice/?case=debt">내용증명 작성 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

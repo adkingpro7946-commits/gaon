@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/calc_court-fee.body.html?raw';
+import scriptJs from '../../_parts/calc_court-fee.script.js?raw';
+---
+
+<BaseLayout title="인지대·송달료 계산기 — 소가별 인지액 자동 계산 | 가온" description="소가(청구금액)를 입력하면 민사소송 인지액과 송달료를 자동 계산합니다. 전자소송 10% 할인, 항소·상고 인지액, 지급명령 인지액, 소액·단독·합의 관할까지 한 번에. 계산은 브라우저에서만 이루어집니다." canonical="/calc/court-fee/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

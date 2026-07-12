@@ -1,0 +1,29 @@
+---
+title: "고소장 작성과 접수 — 어디에 어떻게 내나 | 가온"
+h1: "고소장 작성과 접수, 처음부터 끝까지"
+description: "고소와 고발의 차이, 고소장 구성, 어디에 접수하는지, 친고죄의 6개월 고소기간, 사이버 사건 온라인 신고까지 정리했습니다."
+field: defame
+kicker: "고소 절차"
+reviewer: "가온 편집팀"
+author: "가온 편집팀"
+readingTime: "약 6분"
+status: published
+lastVerifiedAt: "2026-07-11"
+related:
+  - civil-damages
+  - defamation-response
+sources:
+  - issuer: "국가법령정보센터"
+    title: "형사소송법 제230조 (고소기간)"
+---
+
+<p>고소는 피해자가 수사기관에 범죄사실을 신고하고 처벌을 구하는 의사표시입니다. 형식보다 <strong>사실관계를 명확히 적는 것</strong>이 중요합니다.</p>
+
+<h2>고소와 고발의 차이</h2>
+<p><strong>고소</strong>는 피해자(또는 법정대리인)가 하는 것이고, <strong>고발</strong>은 제3자가 하는 것입니다. 명예훼손·모욕은 피해 당사자가 고소하는 것이 일반적입니다.</p>
+<h2>고소장에 들어갈 내용</h2>
+<p>고소인·피고소인 인적사항, <strong>죄명, 고소취지, 범죄사실(육하원칙), 고소이유, 증거자료</strong>를 적습니다. 피고소인을 모르면 &lsquo;성명불상&rsquo;으로 적고 닉네임·URL 등 아는 정보를 최대한 기재합니다.</p>
+<h2>어디에, 언제까지</h2>
+<p>주소지 또는 사건 발생지 <strong>경찰서</strong>에 접수하며, 사이버 사건은 <strong>경찰 사이버범죄 신고시스템(ECRM)</strong>으로도 접수할 수 있습니다. <strong>모욕죄는 친고죄</strong>여서 범인을 안 날부터 <strong>6개월 이내</strong>에 고소해야 합니다.</p>
+<div class="statute"><span class="ref">형사소송법 제230조 (고소기간)</span><p>친고죄는 범인을 알게 된 날부터 6개월을 경과하면 고소하지 못한다.</p></div>
+<div class="casebox"><p class="label">짚어두기</p><p>허위 사실로 고소하면 무고죄가 될 수 있습니다. 과장 없이 있는 그대로 기재하고, 증거로 뒷받침되는 사실만 적으세요.</p></div>

@@ -1,0 +1,85 @@
+<section class="section">
+    <div class="wrap">
+      <p class="breadcrumb no-print"><a href="/">홈</a> &rsaquo; <a href="/tools/">서식 생성기</a> &rsaquo; 임금체불 진정서</p>
+      <div class="section-head no-print"><h2>임금체불 진정서 생성기</h2><span class="rule"></span><span class="count">TOOL 01</span></div>
+      <p class="section-intro no-print">
+        못 받은 임금·퇴직금은 <strong>관할 지방고용노동청</strong>에 진정할 수 있습니다.
+        항목을 채우면 진정서가 완성됩니다. <strong>입력값은 브라우저에서만 처리</strong>됩니다.
+      </p>
+
+      <div class="docgen-grid">
+        <form class="panel no-print" onsubmit="return false" aria-label="진정서 입력">
+          <h3 style="font-size:1rem;margin:0 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">진정인 (근로자·본인)</h3>
+          <div class="field-group"><label for="f-w-name">성명</label><input type="text" id="f-w-name"></div>
+          <div class="field-group"><label for="f-w-addr">주소</label><input type="text" id="f-w-addr"></div>
+          <div class="field-group"><label for="f-w-tel">연락처</label><input type="tel" id="f-w-tel" placeholder="010-0000-0000"></div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">피진정인 (사업주·사업장)</h3>
+          <div class="field-group"><label for="f-b-name">사업주 성명(대표자)</label><input type="text" id="f-b-name"></div>
+          <div class="field-group"><label for="f-b-company">사업장명</label><input type="text" id="f-b-company"></div>
+          <div class="field-group"><label for="f-b-addr">사업장 주소</label><input type="text" id="f-b-addr"></div>
+          <div class="field-group"><label for="f-b-tel">사업장 연락처</label><input type="tel" id="f-b-tel"></div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">근무 및 체불 내역</h3>
+          <div class="field-row-2">
+            <div class="field-group"><label for="f-in">입사일</label><input type="date" id="f-in"></div>
+            <div class="field-group"><label for="f-out">퇴사일 (재직 중이면 비움)</label><input type="date" id="f-out"></div>
+          </div>
+          <div class="field-group"><label for="f-job">담당 업무 / 직종</label><input type="text" id="f-job" placeholder="예: 주방 보조"></div>
+          <div class="field-row-2">
+            <div class="field-group"><label for="f-wage">미지급 임금 (원)</label><input type="text" id="f-wage" inputmode="numeric" placeholder="예: 3,000,000"></div>
+            <div class="field-group"><label for="f-sev">미지급 퇴직금 (원)</label><input type="text" id="f-sev" inputmode="numeric" placeholder="예: 2,000,000"></div>
+          </div>
+          <div class="field-group"><label for="f-detail">체불 경위 (사실관계)</label><textarea id="f-detail"></textarea></div>
+          <div class="field-group"><label for="f-office">관할 지방고용노동청</label><input type="text" id="f-office" placeholder="예: 서울지방고용노동청 ○○지청"></div>
+          <div class="field-group"><label for="f-date">작성일</label><input type="text" id="f-date"></div>
+
+          <div class="btn-row"><button type="button" class="btn" id="f-print">인쇄 / PDF 저장</button><button type="button" class="btn ghost" id="f-clear">모두 지우기</button></div>
+        </form>
+
+        <div class="docgen-preview">
+          <div class="doc print-page" id="doc">
+            <h1 class="doc-title">진&nbsp;정&nbsp;서</h1>
+            <div class="doc-sec">
+              <h4>진정인 (근로자)</h4>
+              <p class="doc-field"><b>성명</b> <span id="d-w-name" class="empty-ph">(진정인)</span></p>
+              <p class="doc-field"><b>주소</b> <span id="d-w-addr" class="empty-ph">(주소)</span></p>
+              <p class="doc-field" id="d-w-tel-wrap" style="display:none;"><b>연락처</b> <span id="d-w-tel"></span></p>
+            </div>
+            <div class="doc-sec">
+              <h4>피진정인 (사업주)</h4>
+              <p class="doc-field"><b>성명</b> <span id="d-b-name" class="empty-ph">(사업주)</span></p>
+              <p class="doc-field"><b>사업장</b> <span id="d-b-company" class="empty-ph">(사업장명)</span></p>
+              <p class="doc-field"><b>주소</b> <span id="d-b-addr" class="empty-ph">(사업장 주소)</span></p>
+              <p class="doc-field" id="d-b-tel-wrap" style="display:none;"><b>연락처</b> <span id="d-b-tel"></span></p>
+            </div>
+            <div class="doc-sec"><h4>진정 취지</h4><p class="doc-flow" id="d-purport"></p></div>
+            <div class="doc-sec"><h4>진정 이유</h4><p class="doc-flow" id="d-detail"></p></div>
+            <p style="margin-top:1rem;">위와 같이 임금 등이 체불되었으므로 「근로기준법」에 따라 조사하시어 체불 금품이 지급되도록 조치하여 주시기 바랍니다.</p>
+            <p class="doc-date" id="d-date"></p>
+            <p class="doc-sign">진정인 <span id="d-sign" class="empty-ph">(성명)</span> <span class="sealmark">(인)</span></p>
+            <p class="doc-court" id="d-office" style="font-size:1rem;margin-top:1.4rem;"><span class="empty-ph">(관할 고용노동청)</span> 귀중</p>
+          </div>
+          <p class="hint no-print" style="text-align:center;margin-top:.8rem;">온라인은 고용노동부 민원마당(minwon.moel.go.kr)에서도 진정할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="panel no-print" style="margin-top:2.4rem;">
+        <h2 class="with-rule">임금체불 진정, 이렇게 진행됩니다</h2>
+        <ol class="step-list" style="margin-top:1rem;">
+          <li>진정서를 <b>관할 지방고용노동청</b>에 제출(방문·우편·온라인 민원마당).</li>
+          <li>근로감독관이 진정인·사업주를 조사합니다.</li>
+          <li>체불이 확인되면 <b>시정지시</b>가 내려지고, 미이행 시 사업주는 형사처벌 대상이 됩니다.</li>
+          <li>그래도 못 받으면 <b>체불금품확인원</b>을 받아 민사소송(소액·지급명령)이나 <b>대지급금(체당금)</b>을 신청할 수 있습니다.</li>
+        </ol>
+        <div class="callout"><strong>퇴직금은 3년, 임금은 3년의 소멸시효</strong>가 있습니다. 늦지 않게 진정하세요. 무료 상담: 고용노동부 <a href="tel:1350">1350</a>.</div>
+        <div class="callout warn"><strong>참고용 초안입니다.</strong> 체불액·기간은 급여명세서·근로계약서를 근거로 정확히 기재하세요. 개별 사안은 <a href="tel:132">법률구조공단 132</a> 또는 고용노동부의 도움을 받으세요.</div>
+      </div>
+
+      <div class="library-banner no-print" style="margin-top:2rem;">
+        <div><h3>퇴직금이 얼마인지 모르겠다면</h3><p>평균임금 기준으로 먼저 계산해 보세요.</p></div>
+        <a class="btn-stamp" href="/calc/severance/">퇴직금 계산 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+  <div class="wrap no-print"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

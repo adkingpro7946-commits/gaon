@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_criminal-complaint.body.html?raw';
+import scriptJs from '../../_parts/tools_criminal-complaint.script.js?raw';
+---
+
+<BaseLayout title="고소장 생성기 — 명예훼손·모욕·사기 무료 작성 | 가온" description="명예훼손·모욕·사기 등 형사 고소를 위한 고소장을 직접 작성하는 무료 생성기. 고소인·피고소인·죄명·범죄사실을 채우면 인쇄용 고소장이 완성됩니다. 입력값은 브라우저에서만 처리됩니다." canonical="/tools/criminal-complaint/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_notice.body.html?raw';
+import styleCss from '../../_parts/tools_notice.style.css?raw';
+import scriptJs from '../../_parts/tools_notice.script.js?raw';
+---
+
+<BaseLayout title="내용증명 생성기 — 보증금·대여금·임금·환불 무료 작성 | 가온" description="보증금 반환, 빌려준 돈, 임금 체불, 환불 요구 등 상황별 내용증명을 이용자가 직접 작성하는 무료 생성기. 발신인·수신인·요구사항만 채우면 A4 인쇄용 문서가 완성됩니다. 입력값은 브라우저에서만 처리되어 서버로 전송되지 않습니다." canonical="/tools/notice/">
+  <style is:inline set:html={styleCss}></style>
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

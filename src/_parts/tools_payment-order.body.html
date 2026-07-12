@@ -1,0 +1,113 @@
+<section class="section">
+    <div class="wrap">
+      <p class="breadcrumb no-print"><a href="/">홈</a> &rsaquo; <a href="/tools/">서식 생성기</a> &rsaquo; 지급명령 신청서</p>
+      <div class="section-head no-print">
+        <h2>지급명령 신청서 생성기</h2><span class="rule"></span><span class="count">TOOL 01</span>
+      </div>
+      <p class="section-intro no-print">
+        <strong>지급명령(독촉절차)</strong>은 소송보다 빠르고 저렴하게 금전을 청구하는 절차입니다.
+        항목을 채우면 오른쪽에 신청서가 완성됩니다. <strong>입력값은 브라우저에서만 처리</strong>됩니다.
+      </p>
+
+      <div class="docgen-grid">
+        <form class="panel no-print" onsubmit="return false" aria-label="지급명령 입력">
+          <div class="field-group">
+            <label for="f-court">관할 법원</label>
+            <input type="text" id="f-court" placeholder="예: 서울중앙지방법원">
+            <p class="hint">보통 채무자 주소지 관할 법원. 전자소송(ecfs.scourt.go.kr)에서도 신청 가능.</p>
+          </div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">채권자 (신청인·본인)</h3>
+          <div class="field-group"><label for="f-cr-name">성명 / 상호</label><input type="text" id="f-cr-name"></div>
+          <div class="field-group"><label for="f-cr-addr">주소</label><input type="text" id="f-cr-addr"></div>
+          <div class="field-group"><label for="f-cr-tel">연락처</label><input type="tel" id="f-cr-tel" placeholder="010-0000-0000"></div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">채무자 (상대방)</h3>
+          <div class="field-group"><label for="f-db-name">성명 / 상호</label><input type="text" id="f-db-name"></div>
+          <div class="field-group"><label for="f-db-addr">주소</label><input type="text" id="f-db-addr"></div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">청구 내용</h3>
+          <div class="field-group">
+            <label for="f-kind">청구 종류 (문안 자동)</label>
+            <select id="f-kind">
+              <option value="loan">대여금</option>
+              <option value="goods">물품대금·미수금</option>
+              <option value="rent">임대차보증금</option>
+              <option value="wage">약정금·용역대금</option>
+            </select>
+          </div>
+          <div class="field-row-2">
+            <div class="field-group"><label for="f-amount">청구금액 (원금, 원)</label><input type="text" id="f-amount" inputmode="numeric" placeholder="예: 10,000,000"></div>
+            <div class="field-group"><label for="f-from">지연이자 기산일</label><input type="date" id="f-from"></div>
+          </div>
+          <div class="field-group"><label for="f-rate">송달 전 이율 (%)</label>
+            <select id="f-rate"><option value="5">민사 연 5%</option><option value="6">상사 연 6%</option><option value="0">이자 청구 안 함</option></select>
+            <p class="hint">송달 다음날부터는 소송촉진법 연 12%가 자동으로 붙습니다.</p>
+          </div>
+          <div class="field-group"><label for="f-cause">청구 원인 (사실관계)</label><textarea id="f-cause"></textarea></div>
+          <div class="field-group"><label for="f-attach">첨부서류</label><input type="text" id="f-attach" value="차용증 사본 1부, 계좌이체 내역 1부"></div>
+          <div class="field-group"><label for="f-date">작성일</label><input type="text" id="f-date"></div>
+
+          <div class="btn-row">
+            <button type="button" class="btn" id="f-print">인쇄 / PDF 저장</button>
+            <button type="button" class="btn ghost" id="f-clear">모두 지우기</button>
+          </div>
+        </form>
+
+        <div class="docgen-preview">
+          <div class="doc print-page" id="doc">
+            <h1 class="doc-title">지급명령신청서</h1>
+            <div class="doc-sec">
+              <h4>채권자</h4>
+              <p class="doc-field"><b>성명/상호</b> <span id="d-cr-name" class="empty-ph">(채권자)</span></p>
+              <p class="doc-field"><b>주소</b> <span id="d-cr-addr" class="empty-ph">(주소)</span></p>
+              <p class="doc-field" id="d-cr-tel-wrap" style="display:none;"><b>연락처</b> <span id="d-cr-tel"></span></p>
+            </div>
+            <div class="doc-sec">
+              <h4>채무자</h4>
+              <p class="doc-field"><b>성명/상호</b> <span id="d-db-name" class="empty-ph">(채무자)</span></p>
+              <p class="doc-field"><b>주소</b> <span id="d-db-addr" class="empty-ph">(주소)</span></p>
+            </div>
+            <p class="doc-court" id="d-caseName">대여금 청구의 독촉사건</p>
+
+            <div class="doc-sec">
+              <h4>청구취지</h4>
+              <p class="doc-flow" id="d-purport"></p>
+            </div>
+            <div class="doc-sec">
+              <h4>청구원인</h4>
+              <p class="doc-flow" id="d-cause"></p>
+            </div>
+            <div class="doc-sec">
+              <h4>첨부서류</h4>
+              <p class="doc-flow" id="d-attach"></p>
+            </div>
+
+            <p class="doc-date" id="d-date"></p>
+            <p class="doc-sign">채권자 <span id="d-sign" class="empty-ph">(성명)</span> <span class="sealmark">(인)</span></p>
+            <p class="doc-court" id="d-court" style="font-size:1rem;margin-top:1.4rem;"><span class="empty-ph">(관할 법원)</span> 귀중</p>
+          </div>
+          <p class="hint no-print" style="text-align:center;margin-top:.8rem;">인지액·송달료는 <a href="/calc/court-fee/">인지대 계산기</a>에서 확인하세요(지급명령은 소송의 1/10).</p>
+        </div>
+      </div>
+
+      <div class="panel no-print" style="margin-top:2.4rem;">
+        <h2 class="with-rule">지급명령, 이렇게 진행됩니다</h2>
+        <ol class="step-list" style="margin-top:1rem;">
+          <li>신청서를 관할 법원에 제출(또는 전자소송). 인지액은 소송의 <b>1/10</b>, 송달료 별도.</li>
+          <li>법원이 지급명령을 채무자에게 송달합니다.</li>
+          <li>채무자가 <b>2주 내 이의</b>하지 않으면 확정 → 강제집행 가능한 집행권원이 됩니다.</li>
+          <li>채무자가 이의하면 <b>통상 소송</b>으로 넘어갑니다.</li>
+        </ol>
+        <div class="callout warn">
+          <strong>참고용 초안입니다.</strong> 청구취지·이자 기산일 등은 사건마다 달라집니다. 제출 전 관할·기재사항을 확인하고, 중요한 사안은 <a href="tel:132">법률구조공단 132</a>의 도움을 받으세요.
+        </div>
+      </div>
+
+      <div class="library-banner no-print" style="margin-top:2rem;">
+        <div><h3>먼저 내용증명부터</h3><p>지급명령 전에 내용증명으로 요구 기록을 남기면 유리합니다.</p></div>
+        <a class="btn-stamp" href="/tools/notice/?case=debt">내용증명 작성 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+  <div class="wrap no-print"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

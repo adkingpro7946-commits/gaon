@@ -1,0 +1,4 @@
+# 가온 — Astro 빌드 배포
+[build]
+  command = "npm run build"
+  publish = "dist"

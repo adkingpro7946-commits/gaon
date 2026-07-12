@@ -1,0 +1,98 @@
+<section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 퇴직금·연차수당</p>
+      <div class="section-head">
+        <h2>퇴직금·연차수당 계산기</h2><span class="rule"></span><span class="count">CALC 02</span>
+      </div>
+      <p class="section-intro">
+        <strong>퇴직금</strong>은 1일 평균임금 × 30일 × (재직일수 ÷ 365)로 계산합니다.
+        <strong>연차수당</strong>은 1일 통상임금 × 미사용 연차일수입니다.
+      </p>
+
+      <!-- 퇴직금 -->
+      <div class="panel">
+        <h2 class="with-rule">① 퇴직금</h2>
+        <div class="field-row-2">
+          <div class="field-group"><label for="s-in">입사일</label><input type="date" id="s-in"></div>
+          <div class="field-group"><label for="s-out">퇴사일 (마지막 근무 다음날)</label><input type="date" id="s-out"></div>
+        </div>
+        <div class="field-group">
+          <label for="s-wage3">퇴직 전 3개월 임금 총액 (원, 세전)</label>
+          <input type="text" id="s-wage3" inputmode="numeric" placeholder="예: 9,000,000">
+          <p class="hint">기본급 + 각종 수당 등 3개월간 실제 지급된 임금의 합계.</p>
+        </div>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="s-bonus">연간 상여금 총액 (선택)</label>
+            <input type="text" id="s-bonus" inputmode="numeric" placeholder="예: 2,000,000">
+            <p class="hint">1년치 상여금. 3/12만 평균임금에 가산됩니다.</p>
+          </div>
+          <div class="field-group">
+            <label for="s-annual">연차수당(전년도) (선택)</label>
+            <input type="text" id="s-annual" inputmode="numeric" placeholder="예: 1,000,000">
+            <p class="hint">퇴직 전전년도 발생분. 3/12 가산.</p>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="s-run">퇴직금 계산</button>
+        </div>
+        <div id="s-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">재직일수</span><span class="v" id="sr-days"></span></div>
+            <div class="result-line"><span class="k">평균임금 산정 기준 임금</span><span class="v" id="sr-base"></span></div>
+            <div class="result-line"><span class="k">1일 평균임금</span><span class="v" id="sr-avg"></span></div>
+            <div class="result-line result-total"><span class="k">예상 퇴직금 (세전)</span><span class="v" id="sr-total"></span></div>
+          </div>
+          <p class="hint" id="sr-detail" style="margin-top:.8rem;"></p>
+        </div>
+      </div>
+
+      <!-- 연차수당 -->
+      <div class="panel" style="margin-top:1.6rem;">
+        <h2 class="with-rule">② 미사용 연차수당</h2>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="a-wage">월 통상임금 (원)</label>
+            <input type="text" id="a-wage" inputmode="numeric" placeholder="예: 3,000,000">
+            <p class="hint">기본급 + 고정수당 (변동 상여·성과급 제외).</p>
+          </div>
+          <div class="field-group">
+            <label for="a-days">미사용 연차일수 (일)</label>
+            <input type="number" id="a-days" min="0" step="0.5" placeholder="예: 10">
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="a-hours">월 소정근로시간</label>
+          <select id="a-hours">
+            <option value="209">주 40시간 (월 209시간, 일반)</option>
+            <option value="226">주 44시간 (월 226시간)</option>
+          </select>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="a-run">연차수당 계산</button>
+        </div>
+        <div id="a-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">시간급 통상임금</span><span class="v" id="ar-hour"></span></div>
+            <div class="result-line"><span class="k">1일 통상임금 (8시간)</span><span class="v" id="ar-day"></span></div>
+            <div class="result-line result-total"><span class="k">미사용 연차수당</span><span class="v" id="ar-total"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:1.6rem;">
+        <strong>참고용 개략치입니다.</strong> 평균임금이 통상임금보다 낮으면 통상임금으로 계산하며(근로기준법), 상여금·수당 포함 범위와 소정근로시간은 사업장마다 다를 수 있습니다.
+        실제 금액은 급여명세서를 근거로 <a href="tel:132">고용노동부 상담(1350)</a> 또는 전문가 확인을 받으세요.
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div>
+          <h3>퇴직금을 못 받고 있다면</h3>
+          <p>임금체불 진정과 내용증명으로 이어집니다.</p>
+        </div>
+        <a class="btn-stamp" href="/tools/notice/?case=labor">임금 내용증명 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

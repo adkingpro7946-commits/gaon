@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { FIELDS } from '../../consts';
+
+const guides = await getCollection('guides');
+
+function shortDesc(d: string): string {
+  const clean = d.replace(/[""]/g, '');
+  return clean.length > 72 ? clean.slice(0, 70) + '…' : clean;
+}
+
+const byField = FIELDS.map((f) => ({
+  ...f,
+  items: guides.filter((g) => g.data.field === f.key),
+}));
+
+const total = guides.length;
+---
+
+<BaseLayout
+  title="절차 가이드 — 임대차·이혼·상속·노동·채권·교통·소비자·명예훼손 | 가온"
+  description="집·상가 임대차, 이혼·가족, 상속·유류분, 임금·노동, 빌려준 돈, 교통사고, 소비자·환불, 명예훼손 8개 분야의 법률 절차를 순서대로 정리한 무료 가이드. 어디에 무엇을 접수하고 무엇을 놓치면 안 되는지 단계별로 안내합니다."
+  canonical="/guides/"
+>
+  <section class="section" style="padding-bottom:1rem;">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; 절차 가이드</p>
+      <div class="section-head">
+        <h2>절차 가이드</h2><span class="rule"></span>
+        <span class="count">TOOL 03 · 8개 분야 · {total}편</span>
+      </div>
+      <p class="section-intro">
+        각 분야의 절차를 순서대로 정리합니다. 모든 글에 <strong>공식 출처와 최종 검토일</strong>을
+        표기하고, 관련 서식·계산기로 바로 이어집니다.
+      </p>
+    </div>
+  </section>
+
+  {
+    byField.map((f) => (
+      <section class="section" id={f.key} style="padding-top:1rem;">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>{f.label}</h2><span class="rule"></span>
+            <span class="count">{f.desc}</span>
+          </div>
+          <div class="list">
+            {f.items.map((g) => (
+              <a class="card" href={`/guides/${g.id}/`}>
+                <p class="kicker">{g.data.kicker}</p>
+                <h3>{g.data.h1}</h3>
+                <p>{shortDesc(g.data.description)}</p>
+                <span class="badge ready">사용 가능</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <div class="wrap">
+    <div class="ad-slot" aria-hidden="true">
+      <div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,68 @@
+<section class="section">
+    <div class="wrap">
+      <p class="breadcrumb no-print"><a href="/">홈</a> &rsaquo; <a href="/tools/">서식 생성기</a> &rsaquo; 차용증·합의서</p>
+      <div class="section-head no-print"><h2>차용증 · 합의서 생성기</h2><span class="rule"></span><span class="count">TOOL 01</span></div>
+      <p class="section-intro no-print">돈을 빌려줄 때 쓰는 <strong>차용증</strong>, 분쟁을 끝내는 <strong>합의서</strong>를 만듭니다. <strong>입력값은 브라우저에서만 처리</strong>됩니다.</p>
+
+      <div class="docgen-grid">
+        <form class="panel no-print" onsubmit="return false" aria-label="문서 입력">
+          <div class="field-group"><label for="f-type">문서 종류</label>
+            <select id="f-type"><option value="loan">차용증</option><option value="settle">합의서</option></select>
+          </div>
+
+          <!-- 차용증 필드 -->
+          <div id="grp-loan">
+            <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">당사자</h3>
+            <div class="field-group"><label for="l-cr">채권자 (빌려주는 사람) 성명</label><input type="text" id="l-cr"></div>
+            <div class="field-group"><label for="l-cr-id">채권자 주민등록/주소</label><input type="text" id="l-cr-id"></div>
+            <div class="field-group"><label for="l-db">채무자 (빌리는 사람) 성명</label><input type="text" id="l-db"></div>
+            <div class="field-group"><label for="l-db-id">채무자 주민등록/주소</label><input type="text" id="l-db-id"></div>
+            <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">대여 조건</h3>
+            <div class="field-group"><label for="l-amount">대여 원금 (원)</label><input type="text" id="l-amount" inputmode="numeric" placeholder="예: 10,000,000"></div>
+            <div class="field-row-2">
+              <div class="field-group"><label for="l-lend-date">대여일</label><input type="date" id="l-lend-date"></div>
+              <div class="field-group"><label for="l-due">변제기(갚기로 한 날)</label><input type="date" id="l-due"></div>
+            </div>
+            <div class="field-group"><label for="l-rate">이자율 (연 %, 없으면 0)</label><input type="number" id="l-rate" min="0" step="0.1" value="0"><p class="hint">법정 최고이자율(현행 연 20%)을 초과할 수 없습니다.</p></div>
+            <div class="field-group"><label for="l-extra">특약 (선택)</label><textarea id="l-extra" placeholder="예: 이자는 매월 말일 지급한다. 1회라도 지체 시 기한의 이익을 상실한다."></textarea></div>
+          </div>
+
+          <!-- 합의서 필드 -->
+          <div id="grp-settle" style="display:none;">
+            <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">당사자</h3>
+            <div class="field-group"><label for="s-a">갑 (당사자 1) 성명</label><input type="text" id="s-a"></div>
+            <div class="field-group"><label for="s-a-addr">갑 주소</label><input type="text" id="s-a-addr"></div>
+            <div class="field-group"><label for="s-b">을 (당사자 2) 성명</label><input type="text" id="s-b"></div>
+            <div class="field-group"><label for="s-b-addr">을 주소</label><input type="text" id="s-b-addr"></div>
+            <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">합의 내용</h3>
+            <div class="field-group"><label for="s-bg">분쟁 개요</label><textarea id="s-bg" placeholder="예: 갑과 을 사이의 20○○. ○○. ○○.자 교통사고에 관하여"></textarea></div>
+            <div class="field-group"><label for="s-money">합의금 (원, 선택)</label><input type="text" id="s-money" inputmode="numeric" placeholder="예: 5,000,000"></div>
+            <div class="field-group"><label for="s-terms">합의 조항</label><textarea id="s-terms" placeholder="예: 을은 갑에게 위 사고에 대한 합의금으로 금 ○○○원을 20○○. ○○. ○○.까지 지급한다."></textarea></div>
+            <div class="field-group"><label><input type="checkbox" id="s-waive" checked style="width:auto;margin-right:.4rem;">청구포기·부제소 조항 넣기</label></div>
+          </div>
+
+          <div class="field-group" style="margin-top:1rem;"><label for="f-date">작성일</label><input type="text" id="f-date"></div>
+          <div class="btn-row"><button type="button" class="btn" id="f-print">인쇄 / PDF 저장</button><button type="button" class="btn ghost" id="f-clear">모두 지우기</button></div>
+        </form>
+
+        <div class="docgen-preview">
+          <div class="doc print-page" id="doc">
+            <h1 class="doc-title" id="d-title">차&nbsp;용&nbsp;증</h1>
+            <div id="d-body"></div>
+            <p class="doc-date" id="d-date"></p>
+            <div id="d-signs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel no-print" style="margin-top:2.4rem;">
+        <h2 class="with-rule">더 확실하게 하려면</h2>
+        <ul style="font-size:.92rem;">
+          <li><b>차용증</b>은 채무자가 <b>자필로 서명·날인</b>하고, 신분증 사본을 첨부하면 좋습니다. 금액이 크면 <b>공증(공정증서)</b>을 받으면 소송 없이 강제집행이 가능합니다.</li>
+          <li><b>합의서</b>는 각 1부씩 보관하고, <b>부제소 합의</b>(다시 소송하지 않기로 함) 조항을 넣으면 분쟁을 확실히 종결할 수 있습니다.</li>
+        </ul>
+        <div class="callout warn"><strong>참고용 초안입니다.</strong> 이자율 상한(현행 연 20%), 미성년자 여부, 조항의 효력 등은 사안마다 다릅니다. 중요한 거래·합의는 <a href="tel:132">법률구조공단 132</a> 또는 공증사무소의 확인을 받으세요.</div>
+      </div>
+    </div>
+  </section>
+  <div class="wrap no-print"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

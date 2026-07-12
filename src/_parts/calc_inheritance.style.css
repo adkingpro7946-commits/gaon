@@ -1,0 +1,5 @@
+
+  .heir-table th, .heir-table td{ border:1px solid var(--rule); padding:.6rem .7rem; text-align:center; font-size:.9rem; }
+  .heir-table th{ background:var(--paper); font-family:var(--font-body); font-weight:700; }
+  .heir-table td.name{ text-align:left; font-weight:600; }
+  .heir-table td.won{ font-family:var(--font-mono); }

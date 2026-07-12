@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import body from '../_parts/disclaimer.body.html?raw';
+---
+
+<BaseLayout title="면책 고지 — 가온" description="가온이 제공하는 법률 정보·서식·계산 결과의 성격과 한계에 관한 면책 고지. 가온은 법률사무소가 아니며 개별 사건의 자문·대리를 제공하지 않습니다." canonical="/disclaimer/">
+  <Fragment set:html={body} />
+</BaseLayout>

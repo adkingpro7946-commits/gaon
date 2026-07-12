@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_agreement.body.html?raw';
+import scriptJs from '../../_parts/tools_agreement.script.js?raw';
+---
+
+<BaseLayout title="차용증·합의서 생성기 — 무료 작성 | 가온" description="돈을 빌려줄 때 쓰는 차용증과 분쟁을 끝내는 합의서를 직접 작성하는 무료 생성기. 당사자·금액·조건을 채우면 인쇄용 문서가 완성됩니다. 입력값은 브라우저에서만 처리됩니다." canonical="/tools/agreement/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

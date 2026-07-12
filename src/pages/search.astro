@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="통합검색 — 가온"
+  description="가온의 61개 절차 가이드와 12개 서식·계산 도구를 한 번에 검색하세요. 임대차·이혼·상속·노동·채권·교통·소비자·명예훼손 생활 법률 정보를 빠르게 찾습니다."
+  canonical="/search/"
+  noindex={true}
+>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  <section class="section" data-pagefind-ignore>
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; 통합검색</p>
+      <div class="section-head">
+        <h2>통합검색</h2><span class="rule"></span>
+        <span class="count">가이드 61 · 도구 12</span>
+      </div>
+      <p class="section-intro">
+        찾으시는 상황이나 키워드를 입력하세요. 예: <strong>전세보증금</strong>,
+        <strong>권고사직 실업급여</strong>, <strong>카톡 명예훼손</strong>,
+        <strong>내용증명</strong>.
+      </p>
+
+      <div id="search" class="gaon-search"></div>
+
+      <div class="panel" style="margin-top:1.6rem;">
+        <h2 class="with-rule">분야로 바로 가기</h2>
+        <div class="axis-grid" style="margin-top:1rem;">
+          <a class="axis-card" href="/guides/"><span class="axis-no">TOOL 03</span><h3>절차 가이드</h3><p>8개 분야 절차를 순서대로.</p></a>
+          <a class="axis-card" href="/tools/"><span class="axis-no">TOOL 01</span><h3>서식 생성기</h3><p>내용증명·지급명령·소장·진정서·고소장.</p></a>
+          <a class="axis-card" href="/calc/"><span class="axis-no">TOOL 02</span><h3>법률 계산기</h3><p>인지대·퇴직금·상속·지연이자·소멸시효.</p></a>
+        </div>
+        <p class="hint" style="margin-top:1rem;">
+          찾는 내용이 없다면 무료 법률상담 <a href="tel:132">대한법률구조공단 132</a>를 이용하실 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <style is:inline>
+    /* Pagefind UI를 가온 디자인 토큰에 맞춤 */
+    .gaon-search {
+      --pagefind-ui-primary: #16394f;
+      --pagefind-ui-text: #14181f;
+      --pagefind-ui-background: #ffffff;
+      --pagefind-ui-border: #cbd2dc;
+      --pagefind-ui-tag: #eff1f4;
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 2px;
+      --pagefind-ui-font: 'Pretendard', -apple-system, 'Malgun Gothic', sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      .gaon-search {
+        --pagefind-ui-text: #e8ecf2;
+        --pagefind-ui-background: #1c222c;
+        --pagefind-ui-border: #333b47;
+        --pagefind-ui-tag: #262d38;
+        --pagefind-ui-primary: #79abcb;
+      }
+    }
+  </style>
+
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof PagefindUI === 'undefined') return;
+      new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        pageSize: 8,
+        translations: {
+          placeholder: '검색어를 입력하세요',
+          clear_search: '지우기',
+          load_more: '더 보기',
+          search_label: '사이트 검색',
+          filters_label: '필터',
+          zero_results: '"[SEARCH_TERM]"에 대한 결과가 없습니다',
+          many_results: '"[SEARCH_TERM]" 검색 결과 [COUNT]건',
+          one_result: '"[SEARCH_TERM]" 검색 결과 1건',
+          alt_search: '"[SEARCH_TERM]" 대신 "[DIFFERENT_TERM]"으로 검색했습니다',
+          search_suggestion: '"[SEARCH_TERM]"에 대한 결과가 없습니다. 아래로 검색해 보세요:',
+          searching: '"[SEARCH_TERM]" 검색 중...'
+        }
+      });
+    });
+  </script>
+</BaseLayout>

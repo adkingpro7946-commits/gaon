@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_index.body.html?raw';
+---
+
+<BaseLayout title="서식 생성기 — 내용증명·지급명령·소장·진정서·합의서·고소장 | 가온" description="내용증명, 지급명령 신청서, 소액사건 소장, 임금체불 진정서, 합의서·차용증, 고소장을 이용자가 직접 작성하는 무료 서식 생성기. 입력값은 브라우저 안에서만 처리되어 서버로 전송되지 않습니다." canonical="/tools/">
+  <Fragment set:html={body} />
+</BaseLayout>

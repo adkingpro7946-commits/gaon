@@ -1,0 +1,99 @@
+<section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 인지대·송달료</p>
+      <div class="section-head">
+        <h2>인지대·송달료 계산기</h2><span class="rule"></span><span class="count">CALC 01</span>
+      </div>
+      <p class="section-intro">
+        소가(청구하는 금액)를 입력하면 소장에 붙일 <strong>인지액</strong>과 예납할 <strong>송달료</strong>를 계산합니다.
+        「민사소송 등 인지법」의 산식을 그대로 적용합니다.
+      </p>
+
+      <div class="panel">
+        <div class="field-group">
+          <label for="cf-sog">소가 (청구금액, 원)</label>
+          <input type="text" id="cf-sog" inputmode="numeric" placeholder="예: 30,000,000">
+          <p class="hint">받으려는 원금 기준. 이자·지연손해금은 원칙적으로 소가에 넣지 않습니다.</p>
+        </div>
+
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="cf-proc">절차 종류</label>
+            <select id="cf-proc">
+              <option value="suit">민사 소송 (소장)</option>
+              <option value="payment">지급명령 (독촉절차)</option>
+            </select>
+          </div>
+          <div class="field-group" id="cf-instance-wrap">
+            <label for="cf-instance">심급</label>
+            <select id="cf-instance">
+              <option value="1">1심</option>
+              <option value="1.5">항소심 (2심)</option>
+              <option value="2">상고심 (3심)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="cf-parties">당사자 수 (원고+피고 합계, 명)</label>
+            <input type="number" id="cf-parties" min="2" step="1" value="2">
+            <p class="hint">송달료 계산에 쓰입니다. 보통 원고 1 + 피고 1 = 2명.</p>
+          </div>
+          <div class="field-group">
+            <label for="cf-online">제출 방식</label>
+            <select id="cf-online">
+              <option value="1">전자소송 (인지액 10% 할인)</option>
+              <option value="0">종이 제출 (할인 없음)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn" id="cf-run">계산하기</button>
+          <button type="button" class="btn ghost" id="cf-reset">초기화</button>
+        </div>
+
+        <div id="cf-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">적용 구간 / 관할</span><span class="v" id="r-bracket" style="font-size:.92rem;"></span></div>
+            <div class="result-line"><span class="k">인지액</span><span class="v" id="r-stamp"></span></div>
+            <div class="result-line"><span class="k">송달료 <span id="r-parties-note" style="font-weight:400;color:var(--ink-soft);"></span></span><span class="v" id="r-service"></span></div>
+            <div class="result-line result-total"><span class="k">합계 (인지액 + 송달료)</span><span class="v" id="r-total"></span></div>
+          </div>
+          <p class="hint" id="r-detail" style="margin-top:.8rem;"></p>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:1.6rem;">
+        <strong>이 금액은 개략치입니다.</strong> 인지액은 100원 미만을 버리고 최소 1,000원으로 계산했으며,
+        송달료 <strong>1회분 단가는 5,200원(2024년 기준 예시)</strong>으로 가정했습니다. 단가와 예납 횟수는 법원·시기에 따라
+        달라질 수 있으니, 실제 납부 전 <strong>관할 법원 또는 전자소송 사이트</strong>에서 확인하시기 바랍니다.
+      </div>
+
+      <div class="panel" style="margin-top:1.6rem;">
+        <h2 class="with-rule">인지액 산정 기준</h2>
+        <p style="font-size:.9rem;color:var(--ink-soft);">「민사소송 등 인지법」 제2조 — 소가에 따른 1심 인지액:</p>
+        <ul style="font-size:.92rem;">
+          <li>소가 1천만원 미만 &nbsp;&rarr;&nbsp; 소가 × <b>0.5%</b></li>
+          <li>1천만원 이상 ~ 1억원 미만 &nbsp;&rarr;&nbsp; 소가 × <b>0.45%</b> + 5,000원</li>
+          <li>1억원 이상 ~ 10억원 미만 &nbsp;&rarr;&nbsp; 소가 × <b>0.4%</b> + 55,000원</li>
+          <li>10억원 이상 &nbsp;&rarr;&nbsp; 소가 × <b>0.35%</b> + 555,000원</li>
+        </ul>
+        <p style="font-size:.9rem;color:var(--ink-soft);margin-top:.6rem;">
+          항소심은 1심의 <b>1.5배</b>, 상고심은 <b>2배</b>. 전자소송 제출 시 인지액의 <b>10%를 할인</b>합니다.
+          지급명령(독촉) 인지액은 소송 인지액의 <b>10분의 1</b>입니다.
+        </p>
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div>
+          <h3>소장까지 직접 써야 한다면</h3>
+          <p>지급명령 신청서·소액소장 서식 생성기와 절차 가이드로 이어집니다.</p>
+        </div>
+        <a class="btn-stamp" href="/tools/">서식 생성기 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

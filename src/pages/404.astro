@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="페이지를 찾을 수 없습니다 (404) | 가온"
+  description="찾으시는 페이지가 없습니다."
+  canonical="/404/"
+  noindex={true}
+>
+  <section class="section" data-pagefind-ignore>
+    <div class="wrap wrap-narrow" style="text-align:center;">
+      <p class="eyebrow" style="color:var(--seal);font-weight:700;letter-spacing:.14em;">ERROR 404</p>
+      <h1 style="font-size:2rem;margin:.4rem 0 1rem;">찾으시는 서류가 여기에 없습니다</h1>
+      <p style="color:var(--ink-soft);max-width:520px;margin:0 auto 2rem;">
+        주소가 바뀌었거나 삭제된 페이지일 수 있습니다. 아래에서 필요한 도구로 바로 이동하세요.
+      </p>
+      <div class="axis-grid" style="text-align:left;">
+        <a class="axis-card" href="/tools/"><span class="axis-no">TOOL 01</span><h3>서식 생성기</h3><p>내용증명·지급명령·소장·진정서·고소장.</p></a>
+        <a class="axis-card" href="/calc/"><span class="axis-no">TOOL 02</span><h3>법률 계산기</h3><p>인지대·퇴직금·상속·지연이자·소멸시효.</p></a>
+        <a class="axis-card" href="/guides/"><span class="axis-no">TOOL 03</span><h3>절차 가이드</h3><p>8개 분야 절차를 순서대로.</p></a>
+      </div>
+      <div class="btn-row" style="justify-content:center;margin-top:2rem;">
+        <a class="btn" href="/">홈으로 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

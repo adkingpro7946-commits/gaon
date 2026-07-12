@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_small-claim.body.html?raw';
+import scriptJs from '../../_parts/tools_small-claim.script.js?raw';
+---
+
+<BaseLayout title="소액사건 소장 생성기 — 3천만원 이하 무료 작성 | 가온" description="3천만원 이하 금전 분쟁을 위한 소액사건 소장을 직접 작성하는 무료 생성기. 원고·피고·청구취지·청구원인을 채우면 인쇄용 소장이 완성됩니다. 입력값은 브라우저에서만 처리됩니다." canonical="/tools/small-claim/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

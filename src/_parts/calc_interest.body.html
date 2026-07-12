@@ -1,0 +1,77 @@
+<section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 지연이자</p>
+      <div class="section-head">
+        <h2>지연이자 계산기</h2><span class="rule"></span><span class="count">CALC 03</span>
+      </div>
+      <p class="section-intro">
+        지연이자 = 원금 × 이율 × (지연일수 ÷ 365). 소장 송달일을 넣으면 그 다음날부터
+        <strong>소송촉진법 연 12%</strong>를 자동으로 나눠 계산합니다.
+      </p>
+
+      <div class="panel">
+        <div class="field-group">
+          <label for="i-principal">원금 (원)</label>
+          <input type="text" id="i-principal" inputmode="numeric" placeholder="예: 10,000,000">
+        </div>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="i-start">지연 기산일 (이자 시작일)</label>
+            <input type="date" id="i-start">
+            <p class="hint">변제기 다음날 등 이행지체가 시작된 날.</p>
+          </div>
+          <div class="field-group">
+            <label for="i-rate">기본 법정이율</label>
+            <select id="i-rate">
+              <option value="0.05">민사 채권 연 5%</option>
+              <option value="0.06">상사 채권 연 6%</option>
+              <option value="custom">직접 입력 (약정이율)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-group" id="i-custom-wrap" style="display:none;">
+          <label for="i-custom">약정이율 (%)</label>
+          <input type="number" id="i-custom" min="0" step="0.1" placeholder="예: 12">
+        </div>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="i-serve">소장 송달일 (선택)</label>
+            <input type="date" id="i-serve">
+            <p class="hint">입력하면 그 다음날부터 연 12% 적용.</p>
+          </div>
+          <div class="field-group">
+            <label for="i-end">계산 종료일</label>
+            <input type="date" id="i-end">
+            <p class="hint">변제일 또는 오늘.</p>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="i-run">지연이자 계산</button>
+        </div>
+        <div id="i-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line"><span class="k">1구간 (송달 전) 이자</span><span class="v" id="ir-seg1"></span></div>
+            <div class="result-line"><span class="k">2구간 (송달 후 12%) 이자</span><span class="v" id="ir-seg2"></span></div>
+            <div class="result-line"><span class="k">지연이자 합계</span><span class="v" id="ir-interest"></span></div>
+            <div class="result-line result-total"><span class="k">원금 + 지연이자</span><span class="v" id="ir-total"></span></div>
+          </div>
+          <p class="hint" id="ir-detail" style="margin-top:.8rem;"></p>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:1.6rem;">
+        <strong>참고용 개략치입니다.</strong> 실제 지연손해금은 약정이율, 일부 변제, 이율 개정(소송촉진법은 2019.6.1.부터 연 12%), 기산일 판단에 따라 달라집니다.
+        단리·365일 기준으로 계산하며, 확정 금액은 관할 법원 또는 <a href="tel:132">법률구조공단 132</a>에 확인하세요.
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div>
+          <h3>원금을 청구하려면</h3>
+          <p>내용증명 → 지급명령 순서로 이어집니다. 인지대도 함께 계산해 보세요.</p>
+        </div>
+        <a class="btn-stamp" href="/calc/court-fee/">인지대 계산 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>

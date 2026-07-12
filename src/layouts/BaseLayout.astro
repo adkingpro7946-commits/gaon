@@ -1,0 +1,137 @@
+---
+import '../styles/global.css';
+import { SITE, NAV, FAVICON } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: string;
+  noindex?: boolean;
+  jsonld?: Record<string, any> | Record<string, any>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType = 'website',
+  noindex = false,
+  jsonld,
+} = Astro.props;
+
+const canonicalURL = canonical
+  ? new URL(canonical, SITE.url).href
+  : new URL(Astro.url.pathname, SITE.url).href;
+
+const jsonldList = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <link rel="icon" href={FAVICON} />
+    <meta name="theme-color" content="#14181F" />
+    {
+      jsonldList.map((obj) => (
+        <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+      ))
+    }
+  </head>
+  <body>
+    <a href="#main" class="skip">본문 바로가기</a>
+
+    <div class="noticebar no-print">
+      가온은 <strong>법률 정보와 서식 도구</strong>를 제공합니다. 법률사무소가 아니며,
+      개별 사건의 자문·대리를 하지 않습니다. 무료 상담은 <a href="tel:132"
+        >대한법률구조공단 132</a
+      >.
+    </div>
+
+    <header class="site-header no-print">
+      <div class="bar">
+        <a class="brand" href="/">
+          <span class="mark">{SITE.name}</span><span class="hanja">{SITE.hanja}</span>
+          <span class="tag">{SITE.tagline}</span>
+        </a>
+        <nav class="nav" aria-label="주요 메뉴">
+          {
+            NAV.map((item) => (
+              <a href={item.href} class={item.cta ? 'cta' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" data-pagefind-body>
+      <slot />
+    </main>
+
+    <footer class="site-footer no-print">
+      <div class="inner">
+        <div class="foot-top">
+          <div>
+            <p class="foot-brand">{SITE.name}<span class="hanja">{SITE.hanja}</span></p>
+            <p style="color:#8B95A3;font-size:.85rem;max-width:320px;margin:.4rem 0 0;">
+              {SITE.slogan}
+            </p>
+          </div>
+          <div class="foot-col">
+            <h4>도구</h4>
+            <a href="/tools/">서식 생성기</a>
+            <a href="/calc/">법률 계산기</a>
+            <a href="/guides/">절차 가이드</a>
+            <a href="/library/">자료실</a>
+          </div>
+          <div class="foot-col">
+            <h4>안내</h4>
+            <a href="/about/">가온 소개</a>
+            <a href="/contact/">문의</a>
+            <a href="/editorial-policy/">편집·검수 정책</a>
+            <a href="/source-policy/">출처 정책</a>
+            <a href="/disclaimer/">면책 고지</a>
+            <a href="/privacy/">개인정보처리방침</a>
+          </div>
+        </div>
+        <p class="foot-note">
+          <span class="seal-line"
+            >본 사이트는 법률 정보와 서식 작성 도구를 제공할 뿐, 특정 사건에 대한 법률
+            자문·대리를 제공하지 않습니다.</span
+          >
+          제공되는 정보와 서식은 일반적인 참고용이며, 법령·판례는 개정될 수 있습니다.
+          무료 법률상담은 <a href="tel:132" style="color:#B7C0CC;text-decoration:underline;"
+            >대한법률구조공단 132</a
+          >.
+        </p>
+        <p class="copy">© 2026 가온(家穩). All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/calc_inheritance.body.html?raw';
+import styleCss from '../../_parts/calc_inheritance.style.css?raw';
+import scriptJs from '../../_parts/calc_inheritance.script.js?raw';
+---
+
+<BaseLayout title="상속지분·유류분 계산기 — 법정상속분 배우자 1.5 가산 | 가온" description="상속인 구성을 입력하면 법정상속분과 유류분을 자동 계산합니다. 배우자 1.5 가산, 직계비속·배우자 유류분 1/2, 직계존속 1/3. 2026년 형제자매 유류분 폐지 반영. 계산은 브라우저에서만 이루어집니다." canonical="/calc/inheritance/">
+  <style is:inline set:html={styleCss}></style>
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

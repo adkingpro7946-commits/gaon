@@ -1,0 +1,117 @@
+# 구 URL(.html) → 신규 디렉터리 URL 301 이관
+
+# 구 사이트 루트 아티클
+/divorce-procedure.html  /guides/divorce-procedure/  301
+/property-division.html  /guides/property-division/  301
+/child-support.html  /guides/child-support/  301
+/judicial-divorce.html  /guides/judicial-divorce/  301
+/alimony.html  /guides/alimony/  301
+/custody.html  /guides/custody/  301
+/visitation.html  /guides/visitation/  301
+/common-law-marriage.html  /guides/common-law-marriage/  301
+/pension-division.html  /guides/pension-division/  301
+/divorce-cost.html  /guides/divorce-cost/  301
+/domestic-violence.html  /guides/domestic-violence/  301
+/custody-change.html  /guides/custody-change/  301
+/marriage-annulment.html  /guides/marriage-annulment/  301
+/inheritance-order.html  /guides/inheritance-order/  301
+/yuryubun-2026.html  /guides/yuryubun-2026/  301
+/renounce-inheritance.html  /guides/renounce-inheritance/  301
+/will-types.html  /guides/will-types/  301
+/inheritance-tax.html  /guides/inheritance-tax/  301
+/substitute-inheritance.html  /guides/substitute-inheritance/  301
+/estate-division.html  /guides/estate-division/  301
+/inheritance-registration.html  /guides/inheritance-registration/  301
+/yuryubun-claim.html  /guides/yuryubun-claim/  301
+/safe-inheritance-service.html  /guides/safe-inheritance-service/  301
+/inheritance-disqualification.html  /guides/inheritance-disqualification/  301
+/contribution-share.html  /guides/contribution-share/  301
+
+# 가이드 (.html → 디렉터리)
+/guides/alimony.html  /guides/alimony/  301
+/guides/child-support.html  /guides/child-support/  301
+/guides/civil-damages.html  /guides/civil-damages/  301
+/guides/common-law-marriage.html  /guides/common-law-marriage/  301
+/guides/complaint-filing.html  /guides/complaint-filing/  301
+/guides/compulsory-execution.html  /guides/compulsory-execution/  301
+/guides/consumer-mediation.html  /guides/consumer-mediation/  301
+/guides/contract-cancellation.html  /guides/contract-cancellation/  301
+/guides/contribution-share.html  /guides/contribution-share/  301
+/guides/criminal-settlement.html  /guides/criminal-settlement/  301
+/guides/custody-change.html  /guides/custody-change/  301
+/guides/custody.html  /guides/custody/  301
+/guides/debt-prescription.html  /guides/debt-prescription/  301
+/guides/debt-recovery-steps.html  /guides/debt-recovery-steps/  301
+/guides/defamation-response.html  /guides/defamation-response/  301
+/guides/defect-refund.html  /guides/defect-refund/  301
+/guides/divorce-cost.html  /guides/divorce-cost/  301
+/guides/divorce-procedure.html  /guides/divorce-procedure/  301
+/guides/domestic-violence.html  /guides/domestic-violence/  301
+/guides/estate-division.html  /guides/estate-division/  301
+/guides/evidence-preservation.html  /guides/evidence-preservation/  301
+/guides/fault-ratio.html  /guides/fault-ratio/  301
+/guides/hit-and-run.html  /guides/hit-and-run/  301
+/guides/inheritance-disqualification.html  /guides/inheritance-disqualification/  301
+/guides/inheritance-order.html  /guides/inheritance-order/  301
+/guides/inheritance-registration.html  /guides/inheritance-registration/  301
+/guides/inheritance-tax.html  /guides/inheritance-tax/  301
+/guides/installment-defense.html  /guides/installment-defense/  301
+/guides/insurance-dispute.html  /guides/insurance-dispute/  301
+/guides/iou-notarization.html  /guides/iou-notarization/  301
+/guides/jeonse-fraud.html  /guides/jeonse-fraud/  301
+/guides/judicial-divorce.html  /guides/judicial-divorce/  301
+/guides/lease-deposit-return.html  /guides/lease-deposit-return/  301
+/guides/lease-eviction.html  /guides/lease-eviction/  301
+/guides/lease-priority.html  /guides/lease-priority/  301
+/guides/lease-renewal.html  /guides/lease-renewal/  301
+/guides/lease-restoration.html  /guides/lease-restoration/  301
+/guides/marriage-annulment.html  /guides/marriage-annulment/  301
+/guides/overtime-pay.html  /guides/overtime-pay/  301
+/guides/payment-order-guide.html  /guides/payment-order-guide/  301
+/guides/pension-division.html  /guides/pension-division/  301
+/guides/property-division.html  /guides/property-division/  301
+/guides/provisional-seizure.html  /guides/provisional-seizure/  301
+/guides/refund-withdrawal.html  /guides/refund-withdrawal/  301
+/guides/renounce-inheritance.html  /guides/renounce-inheritance/  301
+/guides/safe-inheritance-service.html  /guides/safe-inheritance-service/  301
+/guides/secondhand-fraud.html  /guides/secondhand-fraud/  301
+/guides/severance-claim.html  /guides/severance-claim/  301
+/guides/sns-defamation.html  /guides/sns-defamation/  301
+/guides/stalking-response.html  /guides/stalking-response/  301
+/guides/substitute-inheritance.html  /guides/substitute-inheritance/  301
+/guides/traffic-settlement.html  /guides/traffic-settlement/  301
+/guides/unemployment-benefit.html  /guides/unemployment-benefit/  301
+/guides/unfair-dismissal.html  /guides/unfair-dismissal/  301
+/guides/unpaid-wages.html  /guides/unpaid-wages/  301
+/guides/visitation.html  /guides/visitation/  301
+/guides/will-types.html  /guides/will-types/  301
+/guides/work-injury.html  /guides/work-injury/  301
+/guides/workplace-harassment.html  /guides/workplace-harassment/  301
+/guides/yuryubun-2026.html  /guides/yuryubun-2026/  301
+/guides/yuryubun-claim.html  /guides/yuryubun-claim/  301
+
+# 도구
+/tools/index.html  /tools/  301
+/tools/notice.html  /tools/notice/  301
+/tools/payment-order.html  /tools/payment-order/  301
+/tools/small-claim.html  /tools/small-claim/  301
+/tools/labor-complaint.html  /tools/labor-complaint/  301
+/tools/agreement.html  /tools/agreement/  301
+/tools/criminal-complaint.html  /tools/criminal-complaint/  301
+
+# 계산기
+/calc/index.html  /calc/  301
+/calc/court-fee.html  /calc/court-fee/  301
+/calc/severance.html  /calc/severance/  301
+/calc/interest.html  /calc/interest/  301
+/calc/prescription.html  /calc/prescription/  301
+/calc/inheritance.html  /calc/inheritance/  301
+/calc/divorce.html  /calc/divorce/  301
+
+# 정적 페이지
+/guides/index.html  /guides/  301
+/library/index.html  /library/  301
+/about.html  /about/  301
+/contact.html  /contact/  301
+/privacy.html  /privacy/  301
+/disclaimer.html  /disclaimer/  301

@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import body from '../_parts/contact.body.html?raw';
+---
+
+<BaseLayout title="문의 — 운영·제휴 문의 안내 | 가온" description="가온 운영·제휴·오류 제보 문의 안내. 개별 사건에 대한 법률상담은 제공하지 않으며, 무료 법률상담은 대한법률구조공단 132를 안내합니다." canonical="/contact/">
+  <Fragment set:html={body} />
+</BaseLayout>

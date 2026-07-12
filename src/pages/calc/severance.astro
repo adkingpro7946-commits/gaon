@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/calc_severance.body.html?raw';
+import scriptJs from '../../_parts/calc_severance.script.js?raw';
+---
+
+<BaseLayout title="퇴직금·연차수당 계산기 — 평균임금 기준 자동 계산 | 가온" description="입사일·퇴사일과 최근 3개월 임금을 입력하면 평균임금 기준 법정 퇴직금을 자동 계산합니다. 미사용 연차수당도 통상임금 기준으로 함께 계산. 계산은 브라우저에서만 이루어지며 서버로 전송되지 않습니다." canonical="/calc/severance/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

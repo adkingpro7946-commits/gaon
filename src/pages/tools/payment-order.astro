@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/tools_payment-order.body.html?raw';
+import scriptJs from '../../_parts/tools_payment-order.script.js?raw';
+---
+
+<BaseLayout title="지급명령 신청서 생성기 — 독촉절차 무료 작성 | 가온" description="빌려준 돈·미수금을 소송보다 빠르게 받는 지급명령(독촉절차) 신청서를 직접 작성하는 무료 생성기. 채권자·채무자·청구취지·청구원인을 채우면 인쇄용 신청서가 완성됩니다. 입력값은 브라우저에서만 처리됩니다." canonical="/tools/payment-order/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

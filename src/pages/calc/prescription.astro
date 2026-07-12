@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/calc_prescription.body.html?raw';
+import scriptJs from '../../_parts/calc_prescription.script.js?raw';
+---
+
+<BaseLayout title="소멸시효 계산기 — 민사 10년·상사 5년·임금 3년 완성일 | 가온" description="채권 종류와 기산일을 선택하면 소멸시효 완성일과 남은 기간을 계산합니다. 민사 10년, 상사 5년, 임금·퇴직금 3년, 불법행위 3년/10년, 물품대금 3년, 음식·숙박료 1년 등. 계산은 브라우저에서만 이루어집니다." canonical="/calc/prescription/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import body from '../../_parts/calc_interest.body.html?raw';
+import scriptJs from '../../_parts/calc_interest.script.js?raw';
+---
+
+<BaseLayout title="지연이자(지연손해금) 계산기 — 법정이율·소송촉진법 12% | 가온" description="원금과 기간을 입력하면 지연이자를 계산합니다. 소장 송달 전 민사 5%·상사 6% 법정이율, 소장 송달 다음날부터 소송촉진법 연 12%를 구간별로 자동 적용합니다. 계산은 브라우저에서만 이루어집니다." canonical="/calc/interest/">
+  <Fragment set:html={body} />
+  <script is:inline set:html={scriptJs}></script>
+</BaseLayout>

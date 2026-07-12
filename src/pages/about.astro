@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import body from '../_parts/about.body.html?raw';
+---
+
+<BaseLayout title="가온 소개 — 하는 일과 하지 않는 일 | 가온" description="가온은 생활 법률 서식 도구와 절차 정보를 제공하는 셀프 해결 플랫폼입니다. 법률사무소가 아니며 개별 사건의 자문·대리를 하지 않습니다. 가온이 하는 일과 하지 않는 일을 명확히 안내합니다." canonical="/about/">
+  <Fragment set:html={body} />
+</BaseLayout>

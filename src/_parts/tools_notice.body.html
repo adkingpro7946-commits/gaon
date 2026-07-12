@@ -1,0 +1,116 @@
+<section class="section">
+    <div class="wrap">
+      <p class="breadcrumb no-print"><a href="/">홈</a> &rsaquo; <a href="/tools/">서식 생성기</a> &rsaquo; 내용증명</p>
+      <div class="section-head no-print">
+        <h2>내용증명 생성기</h2><span class="rule"></span><span class="count">TOOL 01</span>
+      </div>
+      <p class="section-intro no-print">
+        상황을 고르고 항목을 채우면 오른쪽에 문서가 실시간으로 완성됩니다.
+        <strong>모든 입력은 브라우저 안에서만 처리</strong>되며 저장·전송되지 않습니다. 완성되면 인쇄하거나 PDF로 저장하세요.
+      </p>
+
+      <div class="notice-grid">
+        <!-- 입력 -->
+        <form class="panel no-print" onsubmit="return false" aria-label="내용증명 입력">
+          <div class="field-group">
+            <label for="n-case">상황 선택 (문안 자동 채움)</label>
+            <select id="n-case">
+              <option value="lease">보증금 반환 청구 (임대차)</option>
+              <option value="debt">빌려준 돈 반환 청구 (대여금)</option>
+              <option value="labor">임금·퇴직금 지급 청구</option>
+              <option value="consumer">계약 해지·환불 요구 (소비자)</option>
+              <option value="traffic">손해배상 청구 (교통사고)</option>
+              <option value="inherit">유류분 반환 청구 (상속)</option>
+              <option value="defame">게시물 삭제·중단 요구 (명예훼손)</option>
+              <option value="blank">직접 작성 (빈 양식)</option>
+            </select>
+          </div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">발신인 (보내는 사람 · 본인)</h3>
+          <div class="field-group"><label for="n-from-name">성명</label><input type="text" id="n-from-name" placeholder="홍길동"></div>
+          <div class="field-group"><label for="n-from-addr">주소</label><input type="text" id="n-from-addr" placeholder="서울특별시 ○○구 ○○로 00, 000호"></div>
+          <div class="field-group"><label for="n-from-tel">연락처 (선택)</label><input type="tel" id="n-from-tel" placeholder="010-0000-0000"></div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">수신인 (받는 사람 · 상대방)</h3>
+          <div class="field-group"><label for="n-to-name">성명 / 상호</label><input type="text" id="n-to-name" placeholder="김○○ 또는 ○○부동산"></div>
+          <div class="field-group"><label for="n-to-addr">주소</label><input type="text" id="n-to-addr" placeholder="서울특별시 ○○구 ○○로 00"></div>
+
+          <h3 style="font-size:1rem;margin:1.4rem 0 .6rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;">내용</h3>
+          <div class="field-group"><label for="n-subject">제목</label><input type="text" id="n-subject"></div>
+          <div class="field-group">
+            <label for="n-body">사건 경위 (사실관계)</label>
+            <textarea id="n-body"></textarea>
+            <p class="hint">날짜·금액·계약 내용 등 사실을 시간 순서로 적으면 좋습니다.</p>
+          </div>
+          <div class="field-group">
+            <label for="n-demand">요구사항</label>
+            <textarea id="n-demand"></textarea>
+          </div>
+          <div class="field-group">
+            <label for="n-deadline">이행기한</label>
+            <input type="text" id="n-deadline" placeholder="본 통지서 수령일로부터 14일 이내">
+          </div>
+          <div class="field-group">
+            <label for="n-date">작성일</label>
+            <input type="text" id="n-date" placeholder="2026년 7월 11일">
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn" id="n-print">인쇄 / PDF 저장</button>
+            <button type="button" class="btn ghost" id="n-clear">모두 지우기</button>
+          </div>
+        </form>
+
+        <!-- 미리보기 -->
+        <div class="preview-wrap">
+          <div class="doc print-page" id="doc">
+            <h1 class="doc-title">내용증명</h1>
+            <p class="party"><b>수&nbsp;신&nbsp;인</b> <span id="d-to-name" class="empty-ph">(수신인 성명)</span></p>
+            <p class="party"><b></b> <span id="d-to-addr" class="empty-ph">(수신인 주소)</span></p>
+            <p class="party" style="margin-top:.8rem;"><b>발&nbsp;신&nbsp;인</b> <span id="d-from-name" class="empty-ph">(발신인 성명)</span></p>
+            <p class="party"><b></b> <span id="d-from-addr" class="empty-ph">(발신인 주소)</span></p>
+            <p class="party" id="d-from-tel-wrap" style="display:none;"><b></b> <span id="d-from-tel"></span></p>
+
+            <p class="doc-subject" id="d-subject"></p>
+            <div class="doc-body" id="d-body"></div>
+            <div class="doc-demand" id="d-demand"></div>
+            <p style="margin-top:1rem;">위 요구사항을 <b id="d-deadline-inline">기한 내</b>에 이행하여 주시기 바라며, 이행되지 않을 경우 부득이 법적 절차를 진행할 수 있음을 알려드립니다.</p>
+
+            <p class="doc-date" id="d-date"></p>
+            <p class="doc-sign">발신인 <span id="d-sign-name" class="empty-ph">(성명)</span> <span class="sealmark">(인)</span></p>
+          </div>
+          <p class="hint no-print" style="text-align:center;margin-top:.8rem;">위 문서를 <b>3부</b> 출력하세요 — 발신인 보관용, 수신인 발송용, 우체국 보관용.</p>
+        </div>
+      </div>
+
+      <!-- 접수 방법 -->
+      <div class="panel no-print" style="margin-top:2.4rem;">
+        <h2 class="with-rule">내용증명, 어떻게 보내나</h2>
+        <ol class="step-list" style="margin-top:1rem;">
+          <li><b>같은 문서 3부를 준비</b>합니다. (발신인·수신인·우체국 보관용)</li>
+          <li>우체국 창구에서 <b>“내용증명으로 보내겠다”</b>고 말하고 3부를 제출합니다.</li>
+          <li>우체국이 3부가 동일함을 확인·날인하고, 1부는 우체국이 3년간 보관합니다.</li>
+          <li><b>배달증명</b>을 함께 신청하면 상대가 실제 받은 날짜까지 증명됩니다. (권장)</li>
+          <li>인터넷우체국(ePOST)에서 <b>온라인 내용증명</b>으로도 보낼 수 있습니다.</li>
+        </ol>
+        <div class="callout" style="margin-top:1rem;">
+          내용증명 자체에 강제력은 없지만, <b>“언제, 무엇을 요구했다”는 사실을 공적으로 증명</b>합니다.
+          이후 지급명령·소송의 근거가 되고, 소멸시효 중단(최고) 효과도 있습니다.
+        </div>
+        <div class="callout warn">
+          <strong>이 서식은 참고용 초안입니다.</strong> 생성된 문안은 일반적인 예시이며 개별 사건에 그대로 맞지 않을 수 있습니다.
+          금액·기한·법적 표현은 반드시 직접 확인하고, 중요한 사안은 <a href="tel:132">법률구조공단 132</a>의 도움을 받으세요.
+        </div>
+      </div>
+
+      <div class="library-banner no-print" style="margin-top:2rem;">
+        <div>
+          <h3>보내도 반응이 없다면</h3>
+          <p>다음 단계는 지급명령·소액소송입니다. 인지대 계산기와 서식으로 이어집니다.</p>
+        </div>
+        <a class="btn-stamp" href="/calc/court-fee/">인지대 계산 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap no-print"><div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div></div>
