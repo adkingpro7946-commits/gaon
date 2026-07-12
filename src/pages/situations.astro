@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITUATIONS } from '../situations';
+import { FIELD_LABEL } from '../consts';
+
+const guides = await getCollection('guides');
+const h1of = (slug: string) => guides.find((g) => g.id === slug)?.data.h1 ?? slug;
+---
+
+<BaseLayout
+  title="상황별 안내 — 내 상황부터 선택하세요 | 가온"
+  description="지금 겪고 있는 상황을 고르면, 가장 먼저 할 일과 관련 서식·계산기, 절차 가이드로 바로 안내합니다. 전세보증금·이혼·상속·임금체불·명예훼손 등 14개 상황."
+  canonical="/situations/"
+>
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb"><a href="/">홈</a> &rsaquo; 상황별 안내</p>
+      <div class="section-head">
+        <h2>내 상황부터 선택하세요</h2><span class="rule"></span>
+        <span class="count">14개 상황</span>
+      </div>
+      <p class="section-intro">
+        카테고리 대신 <strong>지금 겪고 있는 상황</strong>부터 고르세요. 가장 먼저 할 일과
+        필요한 서식·계산기, 관련 가이드로 바로 이어집니다.
+      </p>
+
+      <div class="situations">
+        {
+          SITUATIONS.map((s) => (
+            <div class="situation-card" id={s.id}>
+              <div class="situation-head">
+                <span class="sit-field">{FIELD_LABEL[s.field]}</span>
+                <h3>{s.label}</h3>
+                <p class="sit-lead">{s.lead}</p>
+              </div>
+              {s.tools.length > 0 && (
+                <div class="sit-block">
+                  <h4>지금 할 수 있는 것</h4>
+                  <div class="sit-tools">
+                    {s.tools.map((t) => (
+                      <a class="sit-tool" href={t.href}>
+                        {t.label} &rsaquo;
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div class="sit-block">
+                <h4>관련 가이드</h4>
+                <ul class="sit-guides">
+                  {s.guides.map((slug) => (
+                    <li>
+                      <a href={`/guides/${slug}/`}>{h1of(slug)}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="callout" style="margin-top:2rem;">
+        찾는 상황이 없거나 더 복잡한 사건이라면, 무료 법률상담 <a href="tel:132"
+          >대한법률구조공단 132</a
+        >를 이용하거나 <a href="/search/">통합검색</a>으로 찾아보세요.
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .situations {
+      display: grid;
+      gap: 1.1rem;
+    }
+    .situation-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--seal);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+    }
+    .situation-card .sit-field {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--stamp-ink);
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 0.1rem 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .situation-card h3 {
+      font-size: 1.15rem;
+      margin: 0 0 0.4rem;
+    }
+    .sit-lead {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      margin: 0 0 1rem;
+    }
+    .sit-block {
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--rule-soft);
+    }
+    .sit-block h4 {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--ink-soft);
+      margin: 0 0 0.6rem;
+    }
+    .sit-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .sit-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--stamp-ink);
+      color: #fff;
+      border: 1px solid var(--stamp-ink);
+      border-radius: var(--radius);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .sit-tool:hover {
+      background: var(--stamp-ink-hover);
+      text-decoration: none;
+    }
+    .sit-guides {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .sit-guides li {
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      font-size: 0.92rem;
+    }
+    .sit-guides li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</BaseLayout>

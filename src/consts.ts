@@ -12,6 +12,7 @@ export const SITE = {
 
 // 상단 내비게이션
 export const NAV = [
+  { href: '/situations/', label: '상황별' },
   { href: '/tools/', label: '서식 생성' },
   { href: '/calc/', label: '계산기' },
   { href: '/guides/', label: '절차 가이드' },
