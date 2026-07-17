@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../consts';
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: '양육비 예상 계산기',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+  url: `${SITE.url}/calc/child-support/`,
+};
+---
+
+<BaseLayout
+  title="양육비 계산기 — 산정기준표 기반 예상 범위 | 가온"
+  description="부모 합산 소득과 자녀 나이를 넣으면 양육비산정기준표 기준 표준양육비와 소득비율에 따른 예상 부담액을 참고용으로 계산합니다. 실제 금액은 법원이 여러 사정을 고려해 정합니다. 계산은 브라우저에서만 이루어집니다."
+  canonical="/calc/child-support/"
+  jsonld={jsonld}
+>
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb">
+        <a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 양육비
+      </p>
+      <div class="section-head">
+        <h2>양육비 예상 계산기</h2><span class="rule"></span><span class="count">CALC 07</span>
+      </div>
+
+      <div class="callout warn">
+        <strong>이 도구는 &lsquo;확정 금액&rsquo;을 알려주는 계산기가 아닙니다.</strong>
+        <strong>양육비산정기준표</strong>의 표준양육비와 부모 소득비율로 <strong>일반적인 참고 금액</strong>을 보여줄 뿐입니다.
+        실제 양육비는 법원이 자녀의 거주·교육·치료비, 비양육자의 면접교섭 정도 등
+        <strong>여러 사정을 가산·감산해 정하므로 결과와 다를 수 있습니다.</strong>
+      </div>
+
+      <div class="panel">
+        <div class="field-group">
+          <label for="cs-income">부모 합산 세전 월소득 (만원)</label>
+          <input type="number" id="cs-income" min="0" step="10" placeholder="예: 500" />
+          <p class="hint">양육자 + 비양육자의 세금 공제 전 월소득 합계.</p>
+        </div>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="cs-age">자녀 나이 (만)</label>
+            <select id="cs-age">
+              <option value="0">0~2세</option>
+              <option value="1">3~5세</option>
+              <option value="2" selected>6~8세</option>
+              <option value="3">9~11세</option>
+              <option value="4">12~14세</option>
+              <option value="5">15~18세</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="cs-count">자녀 수 (명)</label>
+            <input type="number" id="cs-count" min="1" max="6" step="1" value="1" />
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="cs-mine">본인(양육자) 월소득 (만원, 선택)</label>
+          <input type="number" id="cs-mine" min="0" step="10" placeholder="예: 200" />
+          <p class="hint">입력하면 상대방(비양육자)이 부담할 예상 양육비를 소득비율로 계산합니다.</p>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn" id="cs-run">양육비 범위 보기</button>
+          <button type="button" class="btn ghost" id="cs-reset">초기화</button>
+        </div>
+
+        <div id="cs-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line">
+              <span class="k">적용 구간</span><span class="v" id="csr-bracket" style="font-size:.9rem;"></span>
+            </div>
+            <div class="result-line">
+              <span class="k">자녀 1인 표준양육비 (참고)</span><span class="v" id="csr-one"></span>
+            </div>
+            <div class="result-line">
+              <span class="k">자녀 <span id="csr-n"></span>인 표준양육비 합계 (참고)</span><span class="v" id="csr-total"></span>
+            </div>
+            <div class="result-line result-total" id="csr-share-wrap" style="display:none;">
+              <span class="k">상대방(비양육자) 예상 부담 <span id="csr-ratio" style="font-weight:400;color:var(--ink-soft);"></span></span>
+              <span class="v" id="csr-share"></span>
+            </div>
+          </div>
+          <p class="hint" id="csr-detail" style="margin-top:.8rem;"></p>
+        </div>
+      </div>
+
+      <div class="source-panel">
+        <h2>출처</h2>
+        <ul>
+          <li>
+            <span class="src-issuer">서울가정법원</span>
+            <span>2021년 양육비산정기준표 (표준양육비)</span>
+          </li>
+        </ul>
+        <p class="src-note">
+          이 계산기는 <strong>2021년 서울가정법원 양육비산정기준표</strong>의 표준양육비를 기준으로 합니다.
+          기준표는 개정될 수 있으므로 최신 표를 확인하세요. 최종 검토일 2026-07-11.
+        </p>
+      </div>
+
+      <div class="panel" style="margin-top:1.6rem;">
+        <h2 class="with-rule">어떻게 계산하나</h2>
+        <ol class="step-list" style="margin-top:1rem;">
+          <li><b>표준양육비</b> — 부모 합산 소득과 자녀 나이로 산정기준표에서 자녀 1인당 표준 금액을 찾습니다.</li>
+          <li><b>소득비율 분담</b> — 양육비는 부모가 소득 비율대로 나눠 부담합니다. 비양육자 부담 = 표준양육비 × (비양육자 소득 ÷ 합산 소득).</li>
+          <li><b>가산·감산</b> — 실제 법원은 자녀의 거주지역, 고액 치료비·교육비, 재산 상황 등을 고려해 조정합니다. 이 계산기는 이 조정을 반영하지 않은 <b>기본 참고치</b>입니다.</li>
+        </ol>
+        <div class="callout">
+          정확한 금액과 청구는 사안마다 다릅니다. 무료 상담은 <a href="tel:132">대한법률구조공단 132</a> 또는
+          <a href="/guides/child-support/">양육비 가이드</a>를 참고하세요.
+        </div>
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div>
+          <h3>양육비를 못 받고 있다면</h3>
+          <p>내용증명 → 지급명령 → 이행명령·감치로 강제할 수 있습니다.</p>
+        </div>
+        <a class="btn-stamp" href="/guides/child-support/">양육비 받아내는 법 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      'use strict';
+      var $ = function (id) { return document.getElementById(id); };
+      var won = function (n) { return Math.round(n).toLocaleString('ko-KR') + '원'; };
+
+      // 2021 서울가정법원 양육비산정기준표 — 표준양육비(원/월, 자녀 2인 가구 1인 기준)
+      // 행: 나이(0~2,3~5,6~8,9~11,12~14,15~18) / 열: 부모합산소득 만원 구간
+      // 구간: ~199,200~299,300~399,400~499,500~599,600~699,700~799,800~899,900~999,1000~1199,1200~
+      var TABLE = [
+        [621000, 752000, 945000, 1098000, 1245000, 1401000, 1582000, 1789000, 1997000, 2095000, 2207000],
+        [631000, 759000, 949000, 1113000, 1266000, 1422000, 1598000, 1807000, 2017000, 2116000, 2245000],
+        [648000, 767000, 959000, 1140000, 1292000, 1479000, 1614000, 1850000, 2065000, 2137000, 2312000],
+        [667000, 782000, 988000, 1163000, 1318000, 1494000, 1630000, 1887000, 2137000, 2180000, 2405000],
+        [679000, 790000, 998000, 1244000, 1376000, 1543000, 1664000, 1914000, 2150000, 2239000, 2494000],
+        [703000, 957000, 1227000, 1402000, 1604000, 1794000, 1964000, 2163000, 2246000, 2540000, 2883000]
+      ];
+      var BRACKET_LABELS = ['200만원 미만', '200~299만원', '300~399만원', '400~499만원', '500~599만원', '600~699만원', '700~799만원', '800~899만원', '900~999만원', '1,000~1,199만원', '1,200만원 이상'];
+
+      function incomeIndex(man) {
+        if (man < 200) return 0;
+        if (man >= 1200) return 10;
+        return Math.floor(man / 100) - 1; // 200~299 → 1
+      }
+
+      $('cs-run').addEventListener('click', function () {
+        var income = Number($('cs-income').value) || 0;
+        var age = Number($('cs-age').value);
+        var count = Math.max(1, Number($('cs-count').value) || 1);
+        var mine = $('cs-mine').value === '' ? null : Number($('cs-mine').value);
+        if (!income) { $('cs-income').focus(); return; }
+
+        var col = incomeIndex(income);
+        var one = TABLE[age][col];
+        var total = one * count;
+
+        $('csr-bracket').textContent = '합산소득 ' + BRACKET_LABELS[col] + ' · ' +
+          ['0~2세', '3~5세', '6~8세', '9~11세', '12~14세', '15~18세'][age];
+        $('csr-one').textContent = won(one);
+        $('csr-n').textContent = count;
+        $('csr-total').textContent = won(total);
+
+        if (mine !== null && income > 0) {
+          var otherRatio = Math.max(0, Math.min(1, (income - mine) / income));
+          var share = total * otherRatio;
+          $('csr-ratio').textContent = '(상대 소득비율 ' + Math.round(otherRatio * 100) + '%)';
+          $('csr-share').textContent = won(share);
+          $('csr-share-wrap').style.display = '';
+        } else {
+          $('csr-share-wrap').style.display = 'none';
+        }
+
+        $('csr-detail').textContent =
+          '2021년 서울가정법원 양육비산정기준표 기준. 표준양육비는 자녀 2인 가구를 기준으로 하며, 자녀 수·거주지역·고액 지출 등에 따라 실제 금액은 가감됩니다. 위 값은 참고치입니다.';
+        $('cs-result').style.display = 'block';
+        $('cs-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+
+      $('cs-reset').addEventListener('click', function () {
+        $('cs-income').value = ''; $('cs-mine').value = ''; $('cs-count').value = 1; $('cs-age').value = 2;
+        $('cs-result').style.display = 'none';
+      });
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const CHECKLISTS = [
+  {
+    id: 'divorce',
+    title: '협의이혼 준비 서류',
+    note: '미성년 자녀가 있으면 양육·친권 협의가 필수입니다.',
+    guide: '/guides/divorce-procedure/',
+    items: [
+      '협의이혼의사확인신청서',
+      '부부 각자 신분증·도장',
+      '혼인관계증명서 (상세) 각 1통',
+      '가족관계증명서 각 1통',
+      '주민등록등본 1통',
+      '(미성년 자녀) 자녀 양육과 친권자결정에 관한 협의서',
+      '(미성년 자녀) 양육비부담조서용 자료',
+      '숙려기간 이수 (자녀 有 3개월 / 無 1개월)',
+      '이혼신고서 (확인 후 3개월 내 신고)',
+    ],
+  },
+  {
+    id: 'inherit',
+    title: '상속 정리 체크리스트',
+    note: '상속포기·한정승인은 3개월, 상속세는 6개월 기한이 있습니다.',
+    guide: '/guides/inheritance-order/',
+    items: [
+      '사망진단서·기본증명서 발급',
+      '안심상속 원스톱 서비스로 재산·채무 조회',
+      '상속인 확정 (가족관계증명서)',
+      '상속포기 / 한정승인 판단 (3개월 내)',
+      '상속재산 분할협의서 작성 (상속인 전원 인감)',
+      '부동산 상속등기 (취득세 6개월 내)',
+      '상속세 신고·납부 (사망 달 말일부터 6개월)',
+    ],
+  },
+  {
+    id: 'labor',
+    title: '임금체불 진정 준비',
+    note: '임금·퇴직금은 3년의 소멸시효가 있습니다.',
+    guide: '/guides/unpaid-wages/',
+    items: [
+      '근로계약서 사본',
+      '급여명세서·통장 입금 내역',
+      '출퇴근 기록 등 근무 증빙',
+      '체불 금액·기간 정리표',
+      '사업장·사업주 정보 (상호, 주소, 대표자)',
+      '임금체불 진정서 작성',
+      '(민사 진행 시) 체불금품확인원 발급',
+    ],
+  },
+  {
+    id: 'notice',
+    title: '내용증명 발송 체크리스트',
+    note: '배달증명을 함께 신청하면 상대가 받은 날짜까지 증명됩니다.',
+    guide: '/guides/debt-recovery-steps/',
+    items: [
+      '같은 내용 3부 준비 (발신·수신·우체국)',
+      '발신인·수신인 정확한 주소',
+      '요구사항과 이행기한 명시',
+      '우체국 창구에서 내용증명 접수',
+      '배달증명 함께 신청 (권장)',
+      '발송 영수증·등기번호 보관',
+    ],
+  },
+  {
+    id: 'small-claim',
+    title: '소액사건 소송 준비',
+    note: '소가 3,000만원 이하 금전 분쟁에 해당합니다.',
+    guide: '/guides/debt-recovery-steps/',
+    items: [
+      '소장 작성 (당사자·청구취지·청구원인)',
+      '소장 3부 (법원·피고·본인)',
+      '입증자료 (계약서·차용증·이체내역 등)',
+      '피고 주소·인적사항 확인',
+      '관할 법원 확인',
+      '인지대·송달료 납부',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="준비 서류 체크리스트 — 협의이혼·상속·임금체불·소송 | 가온"
+  description="협의이혼, 상속 정리, 임금체불 진정, 내용증명 발송, 소액소송에 필요한 준비 서류를 체크리스트로. 진행 상황이 저장되고 인쇄할 수 있습니다."
+  canonical="/checklists/"
+>
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb no-print"><a href="/">홈</a> &rsaquo; 준비 서류 체크리스트</p>
+      <div class="section-head no-print">
+        <h2>준비 서류 체크리스트</h2><span class="rule"></span>
+        <span class="count">진행 저장 · 인쇄 가능</span>
+      </div>
+      <p class="section-intro no-print">
+        절차별로 무엇을 준비해야 하는지 하나씩 체크하세요. 체크 상태는 <strong>이 브라우저에 저장</strong>되고(서버 전송 없음),
+        인쇄해서 들고 다닐 수 있습니다.
+      </p>
+
+      <div class="checklists">
+        {
+          CHECKLISTS.map((cl) => (
+            <div class="checklist" id={cl.id}>
+              <div class="cl-head">
+                <h3>{cl.title}</h3>
+                <div class="cl-actions no-print">
+                  <span class="cl-progress" id={`prog-${cl.id}`}>0 / {cl.items.length}</span>
+                  <button type="button" class="cl-print" data-print={cl.id}>인쇄</button>
+                </div>
+              </div>
+              <p class="cl-note">{cl.note}</p>
+              <ul class="cl-items">
+                {cl.items.map((item, i) => (
+                  <li>
+                    <label class="cl-chk">
+                      <input type="checkbox" data-cl={cl.id} data-i={i} />
+                      <span>{item}</span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              <a class="cl-guide no-print" href={cl.guide}>관련 절차 가이드 &rsaquo;</a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="callout warn no-print" style="margin-top:2rem;">
+        <strong>이 체크리스트는 참고용입니다.</strong> 사건·법원·시기에 따라 필요한 서류가 다를 수 있으며,
+        이 목록만으로 법원 제출 서류의 완전성이 보장되지 않습니다. 제출 전 관할 기관이나
+        <a href="tel:132">법률구조공단 132</a>에 확인하세요.
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .checklists { display: grid; gap: 1.2rem; }
+    .checklist {
+      background: var(--card); border: 1px solid var(--rule);
+      border-top: 3px solid var(--stamp-ink); border-radius: var(--radius);
+      padding: 1.3rem 1.4rem; break-inside: avoid;
+    }
+    .cl-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .cl-head h3 { font-size: 1.15rem; margin: 0; }
+    .cl-actions { display: flex; align-items: center; gap: 0.7rem; }
+    .cl-progress { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); }
+    .cl-print { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; color: var(--stamp-ink); background: transparent; border: 1px solid var(--stamp-ink); border-radius: var(--radius); padding: 0.25rem 0.6rem; cursor: pointer; }
+    .cl-print:hover { background: var(--stamp-ink); color: #fff; }
+    .cl-note { color: var(--ink-soft); font-size: 0.85rem; margin: 0.4rem 0 0.9rem; }
+    .cl-items { list-style: none; margin: 0; padding: 0; }
+    .cl-items li { border-top: 1px solid var(--rule-soft); }
+    .cl-chk { display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; padding: 0.55rem 0; user-select: none; }
+    .cl-chk input { appearance: none; flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.1rem; border: 1.5px solid var(--stamp-ink); border-radius: var(--radius); background: var(--card); cursor: pointer; position: relative; }
+    .cl-chk input:checked { background: #1f6b3b; border-color: #1f6b3b; }
+    .cl-chk input:checked::after { content: '✓'; position: absolute; inset: 0; color: #fff; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    .cl-chk input:focus-visible { outline: 2px solid var(--stamp-ink); outline-offset: 2px; }
+    .cl-chk input:checked + span { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--rule); }
+    .cl-guide { display: inline-block; margin-top: 0.9rem; font-size: 0.85rem; font-weight: 600; }
+    @media print {
+      .checklist { border: 1px solid #999; page-break-inside: avoid; }
+      .checklist.print-only-target { }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var KEY = 'gaon-checklists-v1';
+      function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+      function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+      var state = load();
+      var boxes = [].slice.call(document.querySelectorAll('.cl-chk input'));
+
+      function keyOf(b) { return b.getAttribute('data-cl') + ':' + b.getAttribute('data-i'); }
+      function refresh() {
+        var groups = {};
+        boxes.forEach(function (b) {
+          var cl = b.getAttribute('data-cl');
+          groups[cl] = groups[cl] || { n: 0, done: 0 };
+          groups[cl].n++;
+          if (b.checked) groups[cl].done++;
+        });
+        Object.keys(groups).forEach(function (cl) {
+          var el = document.getElementById('prog-' + cl);
+          if (el) el.textContent = groups[cl].done + ' / ' + groups[cl].n;
+        });
+      }
+
+      boxes.forEach(function (b) {
+        if (state[keyOf(b)]) b.checked = true;
+        b.addEventListener('change', function () {
+          state[keyOf(b)] = b.checked;
+          save(state);
+          refresh();
+        });
+      });
+      refresh();
+
+      // 인쇄 (해당 체크리스트만)
+      document.querySelectorAll('.cl-print').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = btn.getAttribute('data-print');
+          var lists = document.querySelectorAll('.checklist');
+          lists.forEach(function (l) { l.style.display = l.id === id ? '' : 'none'; });
+          window.print();
+          setTimeout(function () { lists.forEach(function (l) { l.style.display = ''; }); }, 300);
+        });
+      });
+    })();
+  </script>
+</BaseLayout>
