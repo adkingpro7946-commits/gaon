@@ -47,6 +47,19 @@ const breadcrumbLd = {
     { '@type': 'ListItem', position: 4, name: data.h1, item: url },
   ],
 };
+const faqLd =
+  data.faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: data.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null;
+const jsonld = faqLd ? [articleLd, breadcrumbLd, faqLd] : [articleLd, breadcrumbLd];
 ---
 
 <BaseLayout
@@ -54,7 +67,7 @@ const breadcrumbLd = {
   description={data.description}
   canonical={`/guides/${entry.id}/`}
   ogType="article"
-  jsonld={[articleLd, breadcrumbLd]}
+  jsonld={jsonld}
 >
   <section class="section">
     <div class="wrap wrap-narrow">
@@ -109,6 +122,20 @@ const breadcrumbLd = {
           }
 
           {
+            data.faq.length > 0 && (
+              <div class="faq">
+                <h2>자주 묻는 질문</h2>
+                {data.faq.map((f) => (
+                  <details class="faq-item">
+                    <summary>{f.q}</summary>
+                    <p>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            )
+          }
+
+          {
             relatedEntries.length > 0 && (
               <div class="related">
                 <h2>함께 보면 좋은 글</h2>
@@ -135,3 +162,20 @@ const breadcrumbLd = {
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .faq { margin-top: 2.4rem; }
+  .faq-item { border-top: 1px solid var(--rule); }
+  .faq-item:last-of-type { border-bottom: 1px solid var(--rule); }
+  .faq-item summary {
+    cursor: pointer; padding: 0.9rem 1.6rem 0.9rem 0; font-weight: 600;
+    list-style: none; position: relative; color: var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+'; position: absolute; right: 0.2rem; top: 50%;
+    transform: translateY(-50%); font-size: 1.3rem; color: var(--seal); line-height: 1;
+  }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item p { margin: 0 0 1rem; color: var(--ink-soft); }
+</style>

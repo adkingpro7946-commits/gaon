@@ -44,6 +44,15 @@ const guides = defineCollection({
       )
       .default([]),
     related: z.array(z.string()).default([]),
+    // 자주 묻는 질문 (FAQPage 구조화데이터 + 본문 렌더)
+    faq: z
+      .array(
+        z.object({
+          q: z.string(),
+          a: z.string(),
+        })
+      )
+      .default([]),
   }),
 });
 
