@@ -1,0 +1,34 @@
+---
+title: "최저임금·주휴수당 — 못 받았을 때 계산과 청구 | 가온"
+h1: "최저임금과 주휴수당, 안 주면 체불입니다"
+description: "최저임금에 미달하는 임금은 무효이고 차액을 청구할 수 있습니다. 주 15시간 이상 일하면 발생하는 주휴수당의 요건과 계산법, 못 받았을 때 대응을 정리했습니다."
+field: labor
+kicker: "최저임금·주휴수당"
+readingTime: "약 6분"
+status: published
+publishedAt: "2026-08-07"
+updatedAt: "2026-08-07"
+lastVerifiedAt: "2026-08-07"
+related:
+  - unpaid-wages
+  - overtime-pay
+  - small-business-labor
+sources:
+  - issuer: "국가법령정보센터"
+    title: "최저임금법 제6조, 근로기준법 제55조(주휴일)"
+---
+
+<p>시급이 최저임금보다 낮거나 주휴수당을 빼먹는 것은 <strong>모두 임금체불</strong>입니다. 아르바이트·단시간 근로자에게 특히 자주 발생합니다.</p>
+
+<h2>최저임금 미달은 무효</h2>
+<p>매년 고시되는 <strong>최저임금보다 낮은 임금 약정은 그 부분이 무효</strong>가 되고, 최저임금과 같은 금액을 지급한 것으로 봅니다. 즉 <strong>차액을 청구</strong>할 수 있습니다. 최저임금에는 매월 정기적으로 지급되는 임금이 산입되며, 일부 수당은 제외됩니다.</p>
+<div class="statute"><span class="ref">최저임금법 제6조 (최저임금의 효력)</span><p>최저임금액보다 적은 임금을 정한 근로계약은 그 부분에 한하여 무효로 하며, 무효로 된 부분은 최저임금액과 동일한 임금을 지급하기로 한 것으로 본다.</p></div>
+
+<h2>주휴수당 — 주 15시간 이상이면</h2>
+<p><strong>1주 소정근로시간이 15시간 이상</strong>이고 그 주에 <strong>개근</strong>하면, 유급 주휴일에 대한 <strong>주휴수당</strong>이 발생합니다. 대략 <strong>주휴수당 = 1일 소정근로시간 × 시급</strong>으로 계산합니다. 예컨대 하루 8시간·주5일 개근이면 8시간분의 주휴수당이 추가됩니다.</p>
+<div class="statute"><span class="ref">근로기준법 제55조 (휴일)</span><p>사용자는 근로자에게 1주에 평균 1회 이상의 유급휴일을 보장하여야 한다.</p></div>
+
+<h2>못 받았다면</h2>
+<p>미지급 최저임금·주휴수당은 <strong>임금체불</strong>이므로, 고용노동청에 <strong>진정</strong>을 넣어 국가가 조사·시정하도록 할 수 있습니다. 시효는 3년입니다. 자세한 절차는 <a href="/guides/unpaid-wages/">임금체불 대응</a>을 보세요.</p>
+
+<div class="casebox"><p class="label">짚어두기</p><p>주휴수당은 <strong>5인 미만 사업장에도 적용</strong>됩니다(주 15시간·개근 요건 충족 시). 다만 연장·야간 가산수당은 5인 미만이면 적용되지 않습니다 — <a href="/guides/small-business-labor/">5인 미만 사업장</a>을 참고하세요.</p></div>
