@@ -25,7 +25,9 @@
     consumer: { label: '소비자·환불',    guide: 'consumer', noticeCase: 'consumer',
                 desc: '환불 거부, 계약 해지, 하자·A/S, 청약철회' },
     defame:   { label: '명예훼손·모욕',  guide: 'defame',   noticeCase: 'defame',
-                desc: '온라인 비방·악플, 모욕, 사실적시 명예훼손, 고소' }
+                desc: '온라인 비방·악플, 모욕, 사실적시 명예훼손, 고소' },
+    criminal: { label: '형사·고소',      guide: 'criminal', noticeCase: '',
+                desc: '고소·고발 절차, 사기·폭행·협박·공갈, 무고, 경찰 수사 대응' }
   };
 
   /* --- 5목적 --- */
@@ -57,7 +59,8 @@
     debtrelief:{ write: noticeLink('debtrelief'), act: guideLink('debtrelief'), calc: L('/calc/prescription/','소멸시효 계산') },
     traffic:  { write: noticeLink('traffic'),act: courtFee, calc: L('/calc/interest/','지연이자 계산') },
     consumer: { write: noticeLink('consumer'),act: L('/tools/small-claim/','소액사건 소장'), calc: courtFee },
-    defame:   { write: L('/tools/criminal-complaint/','고소장 작성'), act: L('/tools/criminal-complaint/','고소장 작성'), calc: courtFee }
+    defame:   { write: L('/tools/criminal-complaint/','고소장 작성'), act: L('/tools/criminal-complaint/','고소장 작성'), calc: courtFee },
+    criminal: { write: L('/tools/criminal-complaint/','고소장 작성'), act: L('/tools/criminal-complaint/','고소장 작성'), calc: courtFee }
   };
 
   /* --- 목적별 진단 문안 템플릿 --- */

@@ -172,4 +172,34 @@ export const SITUATIONS: Situation[] = [
       { href: '/tools/notice/?case=defame', label: '게시물 삭제 내용증명' },
     ],
   },
+  {
+    id: 'fraud-victim',
+    label: '사기를 당했어요 (돈을 떼였어요)',
+    field: 'criminal',
+    lead: '형사고소로 처벌을, 민사로 돈을 받습니다. 증거 보전부터 하세요.',
+    guides: ['fraud-complaint', 'criminal-complaint-process', 'evidence-preservation'],
+    tools: [
+      { href: '/tools/criminal-complaint/', label: '고소장 작성' },
+      { href: '/tools/payment-order/', label: '지급명령 신청서' },
+    ],
+  },
+  {
+    id: 'assault-victim',
+    label: '폭행·협박을 당했어요',
+    field: 'criminal',
+    lead: '진단서·증거부터 확보하세요. 폭행·협박은 합의 여부가 중요합니다.',
+    guides: ['assault-injury', 'threat-extortion', 'criminal-complaint-process'],
+    tools: [
+      { href: '/tools/criminal-complaint/', label: '고소장 작성' },
+      { href: '/tools/agreement/', label: '합의서 작성' },
+    ],
+  },
+  {
+    id: 'falsely-accused',
+    label: '억울하게 고소·신고를 당했어요',
+    field: 'criminal',
+    lead: '경찰 조사에 침착하게 대응하고, 허위 신고라면 무고로 대응할 수 있습니다.',
+    guides: ['false-accusation', 'criminal-complaint-process'],
+    tools: [{ href: '/tools/agreement/', label: '합의서 작성' }],
+  },
 ];

@@ -18,6 +18,7 @@ const guides = defineCollection({
       'traffic',
       'consumer',
       'defame',
+      'criminal',
     ]),
     kicker: z.string(),
     audience: z.string().optional(),

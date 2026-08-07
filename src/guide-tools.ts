@@ -46,4 +46,8 @@ export const GUIDE_TOOLS: Record<string, ToolLink[]> = {
     { href: '/tools/criminal-complaint/', label: '고소장 작성' },
     { href: '/tools/notice/?case=defame', label: '게시물 삭제 내용증명' },
   ],
+  criminal: [
+    { href: '/tools/criminal-complaint/', label: '고소장 작성' },
+    { href: '/tools/agreement/', label: '합의서 작성' },
+  ],
 };
