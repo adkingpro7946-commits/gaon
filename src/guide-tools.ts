@@ -23,6 +23,8 @@ export const GUIDE_TOOLS: Record<string, ToolLink[]> = {
   labor: [
     { href: '/tools/labor-complaint/', label: '임금체불 진정서' },
     { href: '/calc/severance/', label: '퇴직금·연차수당 계산' },
+    { href: '/calc/holiday-pay/', label: '주휴수당 계산' },
+    { href: '/calc/annual-leave/', label: '연차휴가 계산' },
   ],
   debt: [
     { href: '/tools/notice/?case=debt', label: '대여금 내용증명' },

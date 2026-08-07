@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../consts';
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: '해고예고수당 계산기',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+  url: `${SITE.url}/calc/dismissal-notice/`,
+};
+---
+
+<BaseLayout
+  title="해고예고수당 계산기 — 30일분 통상임금 계산 | 가온"
+  description="30일 전 예고 없이 해고되면 30일분 통상임금인 해고예고수당을 받을 수 있습니다. 통상 시급과 1일 소정근로시간으로 예고수당을 계산하고, 예고수당이 적용되지 않는 예외도 안내합니다. 계산은 브라우저에서만 이루어집니다."
+  canonical="/calc/dismissal-notice/"
+  jsonld={jsonld}
+>
+  <section class="section">
+    <div class="wrap wrap-narrow">
+      <p class="breadcrumb">
+        <a href="/">홈</a> &rsaquo; <a href="/calc/">법률 계산기</a> &rsaquo; 해고예고수당
+      </p>
+      <div class="section-head">
+        <h2>해고예고수당 계산기</h2><span class="rule"></span><span class="count">CALC 10</span>
+      </div>
+
+      <div class="callout warn">
+        사용자가 <strong>30일 전에 예고하지 않고 해고</strong>하면 <strong>30일분 이상의 통상임금</strong>(해고예고수당)을 지급해야 합니다.
+        이 계산기는 그 30일분을 <strong>참고용으로</strong> 계산합니다. 해고예고수당은 &lsquo;해고가 정당한가&rsquo;와는 별개의 문제입니다.
+      </div>
+
+      <div class="panel">
+        <div class="field-row-2">
+          <div class="field-group">
+            <label for="dn-wage">통상 시급 (원)</label>
+            <input type="number" id="dn-wage" min="0" step="10" placeholder="예: 12000" />
+            <p class="hint">월급제라면 대략 월 통상임금 &divide; 209(주 40시간 기준).</p>
+          </div>
+          <div class="field-group">
+            <label for="dn-hours">1일 소정근로시간</label>
+            <input type="number" id="dn-hours" min="1" max="24" step="0.5" value="8" />
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn" id="dn-run">예고수당 계산</button>
+          <button type="button" class="btn ghost" id="dn-reset">초기화</button>
+        </div>
+
+        <div id="dn-result" style="display:none;">
+          <div class="result-box">
+            <div class="result-line">
+              <span class="k">1일 통상임금</span><span class="v" id="dnr-day"></span>
+            </div>
+            <div class="result-line result-total">
+              <span class="k">해고예고수당 (30일분)</span><span class="v" id="dnr-total"></span>
+            </div>
+          </div>
+          <p class="hint" id="dnr-detail" style="margin-top:.8rem;"></p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.4rem;">
+        <strong>예고수당이 적용되지 않는 경우</strong> — 근로자가 계속 근로한 기간이 <strong>3개월 미만</strong>이거나,
+        천재사변 등 부득이한 사유로 사업을 계속할 수 없는 경우, 근로자가 고의로 사업에 막대한 지장을 준 경우 등에는
+        해고예고수당이 발생하지 않을 수 있습니다.
+      </div>
+
+      <div class="source-panel">
+        <h2>출처</h2>
+        <ul>
+          <li>
+            <span class="src-issuer">국가법령정보센터</span>
+            <span>근로기준법 제26조 (해고의 예고)</span>
+          </li>
+        </ul>
+        <p class="src-note">
+          해고예고수당은 30일분 이상의 통상임금입니다. 1일 통상임금 = 통상 시급 &times; 1일 소정근로시간으로 계산합니다.
+        </p>
+      </div>
+
+      <div class="library-banner" style="margin-top:2rem;">
+        <div>
+          <h3>부당한 해고라고 생각된다면</h3>
+          <p>해고예고수당과 별개로, 3개월 안에 노동위원회에 구제신청을 할 수 있습니다.</p>
+        </div>
+        <a class="btn-stamp" href="/guides/unfair-dismissal/">부당해고 대응 &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="ad-slot" aria-hidden="true"><div class="ph">광고 영역 (AdSense) — 승인 후 자동 노출</div></div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      'use strict';
+      var $ = function (id) { return document.getElementById(id); };
+      var won = function (n) { return Math.round(n).toLocaleString('ko-KR') + '원'; };
+
+      $('dn-run').addEventListener('click', function () {
+        var wage = Number($('dn-wage').value) || 0;
+        var hours = Number($('dn-hours').value) || 0;
+        if (!wage) { $('dn-wage').focus(); return; }
+        if (!hours) { $('dn-hours').focus(); return; }
+
+        var dayWage = wage * hours;
+        var total = dayWage * 30;
+
+        $('dnr-day').textContent = won(dayWage);
+        $('dnr-total').textContent = won(total);
+        $('dnr-detail').textContent =
+          '통상 시급 ' + won(wage) + ' × ' + hours + '시간 = 1일 통상임금 ' + won(dayWage) +
+          ', 그 30일분입니다. 실제 통상임금 산정(각종 수당 포함 여부)에 따라 달라질 수 있는 참고치입니다.';
+
+        $('dn-result').style.display = 'block';
+        $('dn-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+
+      $('dn-reset').addEventListener('click', function () {
+        $('dn-wage').value = ''; $('dn-hours').value = '8';
+        $('dn-result').style.display = 'none';
+      });
+    })();
+  </script>
+</BaseLayout>
