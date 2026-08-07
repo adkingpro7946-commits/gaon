@@ -18,6 +18,8 @@
                 desc: '임금·퇴직금 체불, 부당해고, 연차수당, 실업급여' },
     debt:     { label: '빌려준 돈·채권', guide: 'debt',     noticeCase: 'debt',
                 desc: '대여금·미수금 회수, 차용증, 지급명령, 소멸시효' },
+    debtrelief:{ label: '개인회생·파산',  guide: 'debtrelief', noticeCase: '',
+                desc: '감당 안 되는 빚 정리, 개인회생·파산·면책, 채무조정, 급여압류·불법추심' },
     traffic:  { label: '교통사고',       guide: 'traffic',  noticeCase: 'traffic',
                 desc: '합의금, 과실비율, 치료비·휴업손해, 형사합의' },
     consumer: { label: '소비자·환불',    guide: 'consumer', noticeCase: 'consumer',
@@ -52,6 +54,7 @@
     inherit:  { write: L('/tools/agreement/','상속재산 분할협의서'), act: courtFee, calc: L('/calc/inheritance/','상속지분·유류분 계산') },
     labor:    { write: L('/tools/labor-complaint/','임금체불 진정서'), act: L('/tools/labor-complaint/','임금체불 진정서'), calc: L('/calc/severance/','퇴직금·연차수당 계산') },
     debt:     { write: noticeLink('debt'),   act: L('/tools/payment-order/','지급명령 신청서'), calc: L('/calc/interest/','지연이자 계산') },
+    debtrelief:{ write: noticeLink('debtrelief'), act: guideLink('debtrelief'), calc: L('/calc/prescription/','소멸시효 계산') },
     traffic:  { write: noticeLink('traffic'),act: courtFee, calc: L('/calc/interest/','지연이자 계산') },
     consumer: { write: noticeLink('consumer'),act: L('/tools/small-claim/','소액사건 소장'), calc: courtFee },
     defame:   { write: L('/tools/criminal-complaint/','고소장 작성'), act: L('/tools/criminal-complaint/','고소장 작성'), calc: courtFee }

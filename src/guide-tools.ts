@@ -30,6 +30,10 @@ export const GUIDE_TOOLS: Record<string, ToolLink[]> = {
     { href: '/calc/prescription/', label: '소멸시효 계산' },
     { href: '/calc/interest/', label: '지연이자 계산' },
   ],
+  debtrelief: [
+    { href: '/calc/prescription/', label: '소멸시효 계산' },
+    { href: '/tools/notice/', label: '내용증명 생성기' },
+  ],
   traffic: [
     { href: '/tools/notice/?case=traffic', label: '손해배상 내용증명' },
     { href: '/calc/interest/', label: '지연이자 계산' },

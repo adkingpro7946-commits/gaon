@@ -113,6 +113,25 @@ export const SITUATIONS: Situation[] = [
     ],
   },
   {
+    id: 'over-indebted',
+    label: '빚이 소득으로 감당이 안 돼요',
+    field: 'debtrelief',
+    lead: '소득이 있으면 개인회생(3년 변제), 없으면 파산·면책. 법원 전에 채무조정도 있습니다.',
+    guides: ['personal-rehabilitation', 'bankruptcy-discharge', 'debt-workout'],
+    tools: [{ href: '/calc/prescription/', label: '소멸시효 계산' }],
+  },
+  {
+    id: 'garnishment',
+    label: '급여·통장이 압류되거나 불법 추심을 당해요',
+    field: 'debtrelief',
+    lead: '월 185만원·급여의 절반은 압류금지입니다. 야간·협박 추심은 불법이니 신고하세요.',
+    guides: ['wage-garnishment', 'illegal-collection', 'debt-prescription'],
+    tools: [
+      { href: '/tools/notice/', label: '내용증명(소멸시효·채무부존재)' },
+      { href: '/calc/prescription/', label: '소멸시효 계산' },
+    ],
+  },
+  {
     id: 'traffic',
     label: '교통사고 합의를 앞두고 있어요',
     field: 'traffic',

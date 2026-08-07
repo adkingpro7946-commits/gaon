@@ -14,6 +14,7 @@ const guides = defineCollection({
       'inherit',
       'labor',
       'debt',
+      'debtrelief',
       'traffic',
       'consumer',
       'defame',
