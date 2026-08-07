@@ -173,6 +173,18 @@ export const SITUATIONS: Situation[] = [
     ],
   },
   {
+    id: 'diy-lawsuit',
+    label: '변호사 없이 직접 소송하려고 해요',
+    field: 'litigation',
+    lead: '전자소송으로 집에서 접수할 수 있습니다. 관할·소가·인지대부터 확인하세요.',
+    guides: ['e-litigation', 'civil-lawsuit-flow', 'court-jurisdiction', 'evidence-in-court'],
+    tools: [
+      { href: '/tools/small-claim/', label: '소액사건 소장' },
+      { href: '/tools/payment-order/', label: '지급명령 신청서' },
+      { href: '/calc/court-fee/', label: '인지대·송달료 계산' },
+    ],
+  },
+  {
     id: 'fraud-victim',
     label: '사기를 당했어요 (돈을 떼였어요)',
     field: 'criminal',

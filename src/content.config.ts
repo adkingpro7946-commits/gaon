@@ -15,6 +15,7 @@ const guides = defineCollection({
       'labor',
       'debt',
       'debtrelief',
+      'litigation',
       'traffic',
       'consumer',
       'defame',

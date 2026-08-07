@@ -28,6 +28,7 @@ export const FIELDS = [
   { key: 'labor', label: '임금·노동', desc: '임금·퇴직금 체불, 부당해고, 연차수당, 실업급여' },
   { key: 'debt', label: '빌려준 돈·채권', desc: '대여금·미수금 회수, 차용증, 지급명령, 소멸시효' },
   { key: 'debtrelief', label: '개인회생·파산', desc: '개인회생, 파산·면책, 채무조정, 급여압류·불법추심 대응' },
+  { key: 'litigation', label: '나홀로 소송·집행', desc: '전자소송, 민사소송 절차, 관할·소가, 증거신청, 판결 후 집행' },
   { key: 'traffic', label: '교통사고', desc: '합의금, 과실비율, 치료비·휴업손해, 형사합의' },
   { key: 'consumer', label: '소비자·환불', desc: '환불 거부, 계약 해지, 하자·A/S, 청약철회' },
   { key: 'defame', label: '명예훼손·모욕', desc: '온라인 비방·악플, 모욕, 사실적시 명예훼손, 고소' },

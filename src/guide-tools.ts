@@ -34,6 +34,11 @@ export const GUIDE_TOOLS: Record<string, ToolLink[]> = {
     { href: '/calc/prescription/', label: '소멸시효 계산' },
     { href: '/tools/notice/', label: '내용증명 생성기' },
   ],
+  litigation: [
+    { href: '/tools/small-claim/', label: '소액사건 소장' },
+    { href: '/tools/payment-order/', label: '지급명령 신청서' },
+    { href: '/calc/court-fee/', label: '인지대·송달료 계산' },
+  ],
   traffic: [
     { href: '/tools/notice/?case=traffic', label: '손해배상 내용증명' },
     { href: '/calc/interest/', label: '지연이자 계산' },
