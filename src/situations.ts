@@ -37,7 +37,7 @@ export const SITUATIONS: Situation[] = [
     label: '양육비를 못 받고 있어요',
     field: 'divorce',
     lead: '정해진 양육비를 안 줄 때, 강제할 수 있는 방법이 있습니다.',
-    guides: ['child-support'],
+    guides: ['child-support', 'child-support-enforcement'],
     tools: [
       { href: '/tools/notice/?case=labor', label: '내용증명(이행 촉구)' },
       { href: '/tools/payment-order/', label: '지급명령 신청서' },
