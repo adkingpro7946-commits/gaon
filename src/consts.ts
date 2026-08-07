@@ -33,6 +33,7 @@ export const FIELDS = [
   { key: 'consumer', label: '소비자·환불', desc: '환불 거부, 계약 해지, 하자·A/S, 청약철회' },
   { key: 'defame', label: '명예훼손·모욕', desc: '온라인 비방·악플, 모욕, 사실적시 명예훼손, 고소' },
   { key: 'criminal', label: '형사·고소', desc: '고소·고발 절차, 사기·폭행·협박·공갈, 무고, 경찰 수사 대응' },
+  { key: 'admin', label: '생활·행정', desc: '과태료·범칙금 이의, 운전면허 취소·정지 구제, 정보공개청구, 행정심판' },
 ] as const;
 
 export const FIELD_LABEL: Record<string, string> = Object.fromEntries(

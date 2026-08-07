@@ -214,4 +214,20 @@ export const SITUATIONS: Situation[] = [
     guides: ['false-accusation', 'criminal-complaint-process'],
     tools: [{ href: '/tools/agreement/', label: '합의서 작성' }],
   },
+  {
+    id: 'fine-dispute',
+    label: '과태료·범칙금이 억울해요',
+    field: 'admin',
+    lead: '통지받은 날부터 60일 안에 이의제기하면 법원 재판으로 다툴 수 있습니다.',
+    guides: ['fine-objection', 'admin-appeal'],
+    tools: [],
+  },
+  {
+    id: 'license-revoked',
+    label: '운전면허가 취소·정지됐어요',
+    field: 'admin',
+    lead: '이의신청(60일)이나 행정심판(90일)으로 구제를 다툴 수 있습니다.',
+    guides: ['license-revocation', 'admin-appeal'],
+    tools: [],
+  },
 ];
