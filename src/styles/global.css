@@ -263,7 +263,9 @@ table{ border-collapse:collapse; width:100%; }
 .library-banner .btn-stamp:hover{ background:#95181c; }
 
 /* --- 광고 슬롯 --------------------------------------------- */
-.ad-slot{ margin:1.5rem 0; text-align:center; }
+/* 애드센스 승인 전에는 플레이스홀더 숨김(심사 시 미완성 인상 방지).
+   승인 후 실제 광고 코드 삽입 시 아래 display:none 을 제거할 것. */
+.ad-slot{ display:none; margin:1.5rem 0; text-align:center; }
 .ad-slot .ph{
   border:1px dashed var(--rule); color:var(--ink-soft);
   padding:1.4rem; font-size:.8rem; border-radius:var(--radius); background:var(--card);
