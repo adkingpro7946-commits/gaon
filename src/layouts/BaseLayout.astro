@@ -56,6 +56,12 @@ const jsonldList = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
     />
     <link rel="icon" href={FAVICON} />
     <meta name="theme-color" content="#14181F" />
+    <!-- Google AdSense -->
+    <script
+      is:inline
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8033753532566337"
+      crossorigin="anonymous"></script>
     {
       jsonldList.map((obj) => (
         <script type="application/ld+json" set:html={JSON.stringify(obj)} />
