@@ -1,0 +1,91 @@
+---
+// 계산기·서식 도구 하단 해설 (계산 원리·법적 근거·예시·주의점·FAQ)
+import { EXPLAINERS } from '../explainers';
+import { getCollection } from 'astro:content';
+
+interface Props { id: string }
+const { id } = Astro.props;
+const ex = EXPLAINERS[id];
+const guides = ex ? await getCollection('guides') : [];
+const related = ex
+  ? ex.related
+      .map((slug) => guides.find((g) => g.id === slug))
+      .filter((g): g is NonNullable<typeof g> => Boolean(g))
+  : [];
+const faqLd = ex && ex.faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: ex.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
+---
+
+{ex && (
+  <section class="section explainer">
+    <div class="wrap wrap-narrow">
+      <div class="prose">
+        <h2>{ex.title}</h2>
+        <p class="byline-ex">가온 편집팀 작성·검토 · 최종 검토일 {ex.updated}</p>
+        <Fragment set:html={ex.html} />
+
+        {ex.faq.length > 0 && (
+          <div class="faq">
+            <h2>자주 묻는 질문</h2>
+            {ex.faq.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        )}
+
+        {ex.sources.length > 0 && (
+          <div class="source-panel">
+            <h2>근거·공식 출처</h2>
+            <ul>
+              {ex.sources.map((s) => (
+                <li>
+                  <span class="src-issuer">{s.issuer}</span>
+                  {s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : <span>{s.title}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {related.length > 0 && (
+          <div class="related">
+            <h2>함께 보면 좋은 가이드</h2>
+            {related.map((r) => <a href={`/guides/${r.id}/`}>{r.data.h1}</a>)}
+          </div>
+        )}
+
+        <div class="disclaimer">
+          <strong>면책 안내</strong> — 계산 결과와 서식은 일반적인 참고용이며 특정 사건에 대한 법률
+          자문이 아닙니다. 실제 금액·요건은 개별 사정과 법령 개정에 따라 달라질 수 있으니, 중요한 결정 전에는
+          관할 기관이나 대한법률구조공단(국번 없이 132)에 확인하시기 바랍니다.
+        </div>
+      </div>
+    </div>
+    {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+  </section>
+)}
+
+<style>
+  .explainer { padding-top: 0; }
+  .byline-ex { font-size: .85rem; color: var(--ink-soft, #5B6573); margin: -.3rem 0 1.2rem; }
+  .faq { margin-top: 2.4rem; }
+  .faq-item { border-top: 1px solid var(--rule); }
+  .faq-item:last-of-type { border-bottom: 1px solid var(--rule); }
+  .faq-item summary { cursor: pointer; padding: .9rem 1.6rem .9rem 0; font-weight: 600; list-style: none; position: relative; color: var(--ink); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; position: absolute; right: .2rem; top: 50%; transform: translateY(-50%); font-size: 1.3rem; color: var(--seal); line-height: 1; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item p { margin: 0 0 1rem; color: var(--ink-soft); }
+</style>

@@ -362,7 +362,7 @@ table{ border-collapse:collapse; width:100%; }
 .casebox .label{ font-size:.72rem; font-weight:700; letter-spacing:.06em; color:#9a7b1e; margin:0 0 .4rem; }
 .casebox p{ margin:0; font-size:.92rem; }
 /* 아티클 내 면책 */
-.article .disclaimer{
+.article .disclaimer, .explainer .disclaimer{
   background:#fbeeee; border:1px solid #e8c9c9; border-left:3px solid var(--seal);
   border-radius:var(--radius); padding:1rem 1.2rem; margin:1.6rem 0; font-size:.88rem; color:#333;
 }
@@ -492,3 +492,10 @@ table{ border-collapse:collapse; width:100%; }
   }
   @page{ size:A4; margin:0; }
 }
+
+/* 본문 표 (가이드·해설) */
+.prose table{ display:block; overflow-x:auto; margin:1rem 0 1.4rem; font-size:.9rem; }
+.prose th, .prose td{ border:1px solid var(--rule); padding:.5rem .65rem; text-align:left; vertical-align:top; }
+.prose thead th{ background:#F3F1EC; font-weight:700; }
+.prose ol:not(.step-list), .prose ul{ padding-left:1.3rem; }
+.prose li{ margin:.25rem 0; }

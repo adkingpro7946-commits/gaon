@@ -29,7 +29,7 @@
     } else if(spouse){
       rows.push({name:'배우자', type:'spouse', share:1});
     } else {
-      $('h-tbody').innerHTML = '<tr><td colspan="3">1·2순위 상속인(자녀·부모·배우자)이 없습니다. 형제자매 등 후순위가 상속하며, 이 경우 유류분은 인정되지 않습니다(2026 개정).</td></tr>';
+      $('h-tbody').innerHTML = '<tr><td colspan="3">1·2순위 상속인(자녀·부모·배우자)이 없습니다. 형제자매 등 후순위가 상속하며, 이 경우 유류분은 인정되지 않습니다(2024년 헌법재판소 위헌 결정).</td></tr>';
       $('h-detail').textContent = '';
       $('h-result').style.display='block'; return;
     }

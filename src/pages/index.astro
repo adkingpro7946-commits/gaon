@@ -1,10 +1,39 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import body from '../_parts/index.body.html?raw';
 import scriptJs from '../_parts/index.script.js?raw';
+import { FIELD_LABEL } from '../consts';
+
+const guides = await getCollection('guides');
+const latest = [...guides]
+  .sort((a, b) =>
+    (b.data.publishedAt + b.data.updatedAt).localeCompare(a.data.publishedAt + a.data.updatedAt)
+  )
+  .slice(0, 9);
+const shortDesc = (d: string) => (d.length > 90 ? d.slice(0, 88) + '…' : d);
 ---
 
 <BaseLayout title="가온(家穩) — 변호사를 부르기 전에, 스스로 할 수 있는 것부터" description="내용증명·지급명령·소액소송 서식 생성기와 인지대·퇴직금·상속·지연이자 계산기. 임대차·이혼·상속·노동·채권·개인회생·형사·소송·행정 등 12개 분야의 법률 절차를 스스로 해결하는 무료 도구 모음, 가온입니다." canonical="/">
   <Fragment set:html={body} />
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>새로 쓰고 보강한 가이드</h2><span class="rule"></span>
+        <span class="count">전체 {guides.length}편 · 모든 글에 공식 출처·최종 검토일 표기</span>
+      </div>
+      <div class="list">
+        {latest.map((g) => (
+          <a class="card" href={`/guides/${g.id}/`}>
+            <p class="kicker">{FIELD_LABEL[g.data.field]} · {g.data.kicker}</p>
+            <h3>{g.data.h1}</h3>
+            <p>{shortDesc(g.data.description)}</p>
+            <span class="badge ready">검토일 {g.data.lastVerifiedAt}</span>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:1.2rem;"><a href="/guides/">12개 분야 가이드 전체 보기 &rsaquo;</a></p>
+    </div>
+  </section>
   <script is:inline set:html={scriptJs}></script>
 </BaseLayout>

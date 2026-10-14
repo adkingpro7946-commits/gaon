@@ -1,4 +1,5 @@
 ---
+import Explainer from '../../components/Explainer.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import body from '../../_parts/tools_notice.body.html?raw';
 import styleCss from '../../_parts/tools_notice.style.css?raw';
@@ -9,4 +10,5 @@ import scriptJs from '../../_parts/tools_notice.script.js?raw';
   <style is:inline set:html={styleCss}></style>
   <Fragment set:html={body} />
   <script is:inline set:html={scriptJs}></script>
+  <Explainer id="tools-notice" />
 </BaseLayout>

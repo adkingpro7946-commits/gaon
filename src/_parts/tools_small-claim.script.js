@@ -10,7 +10,8 @@
     var rate=$('f-rate').value;
     var from=$('f-from').value?$('f-from').valueAsDate:null;
     var fromStr=from?(from.getFullYear()+'. '+(from.getMonth()+1)+'. '+from.getDate()+'.'):'20○○. ○○. ○○.';
-    var s='1. 피고는 원고에게 금 '+amt+'원 및 이에 대하여 '+fromStr+'부터 ';
+    var s='1. 피고는 원고에게 금 '+amt+'원 및 이에 대하여 ';
+    if(rate!=='0') s+=fromStr+'부터 ';
     if(rate==='0') s+='이 사건 소장 부본 송달일 다음날부터 다 갚는 날까지 연 12%의 비율로 계산한 돈을 지급하라.';
     else s+='이 사건 소장 부본 송달일까지는 연 '+rate+'%, 그 다음날부터 다 갚는 날까지는 연 12%의 각 비율로 계산한 돈을 지급하라.';
     s+='\n2. 소송비용은 피고가 부담한다.\n3. 제1항은 가집행할 수 있다.\n라는 판결을 구합니다.';

@@ -79,9 +79,10 @@ const jsonld = faqLd ? [articleLd, breadcrumbLd, faqLd] : [articleLd, breadcrumb
         <p class="kicker">{data.kicker}</p>
         <h1>{data.h1}</h1>
         <p class="byline">
-          <strong>{data.reviewer}</strong>
+          글 <strong>{data.author}</strong> · 사실 확인 <strong>{data.reviewer}</strong>
           {data.readingTime && <> · {data.readingTime}</>}
-          · 최종 검토일 {data.lastVerifiedAt}
+          · 작성 {data.publishedAt} · 최종 검토일 {data.lastVerifiedAt}
+          · <a href="/editorial-policy/">편집·검수 기준</a>
         </p>
 
         <div class="prose">

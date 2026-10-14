@@ -16,6 +16,7 @@ export const NAV = [
   { href: '/tools/', label: '서식 생성' },
   { href: '/calc/', label: '계산기' },
   { href: '/guides/', label: '절차 가이드' },
+  { href: '/about/', label: '소개' },
   { href: '/search/', label: '검색' },
   { href: '/library/', label: '자료실', cta: true },
 ] as const;

@@ -16,7 +16,8 @@
     var rate=$('f-rate').value;
     var from=$('f-from').value ? $('f-from').valueAsDate : null;
     var fromStr = from ? (from.getFullYear()+'. '+(from.getMonth()+1)+'. '+from.getDate()+'.') : '20○○. ○○. ○○.';
-    var s='채무자는 채권자에게 금 '+amt+'원 및 이에 대하여 '+fromStr+'부터 ';
+    var s='채무자는 채권자에게 금 '+amt+'원 및 이에 대하여 ';
+    if(rate!=='0') s+=fromStr+'부터 ';
     if(rate==='0'){
       s+='이 사건 지급명령 정본이 송달된 날의 다음날부터 다 갚는 날까지 연 12%의 비율로 계산한 지연손해금을 지급하라.';
     } else {
