@@ -499,3 +499,9 @@ table{ border-collapse:collapse; width:100%; }
 .prose thead th{ background:#F3F1EC; font-weight:700; }
 .prose ol:not(.step-list), .prose ul{ padding-left:1.3rem; }
 .prose li{ margin:.25rem 0; }
+
+/* 허브 페이지 비교표 */
+.table-wrap{ overflow-x:auto; margin:1rem 0 1.5rem; }
+.table-wrap table{ min-width:640px; font-size:.9rem; }
+.table-wrap th,.table-wrap td{ border-bottom:1px solid var(--rule); padding:.6rem .5rem; text-align:left; vertical-align:top; line-height:1.55; }
+.table-wrap th{ font-weight:700; white-space:nowrap; }
